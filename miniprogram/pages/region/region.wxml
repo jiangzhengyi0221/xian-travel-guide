@@ -1,0 +1,110 @@
+<!-- pages/region/region.wxml -->
+<view class="region-page">
+  <view class="region-header">
+    <text class="region-header__eyebrow">AREA GUIDE</text>
+    <text class="region-header__title">{{region.name}}</text>
+    <text class="region-header__summary">这里将展示当前区域的特色简介和旅行亮点。</text>
+  </view>
+
+  <view class="content-section content-section--attraction">
+    <view class="content-section__heading">
+      <view class="content-section__number">01</view>
+      <view class="content-section__text">
+        <text class="content-section__title">景点</text>
+        <text class="content-section__subtitle">值得游览的城市风景</text>
+      </view>
+    </view>
+    <view wx:if="{{attractions.length}}" class="place-list">
+      <navigator
+        wx:for="{{attractions}}"
+        wx:for-item="place"
+        wx:key="id"
+        class="place-card"
+        url="/pages/detail/detail?id={{place.id}}"
+      >
+        <text class="place-card__name">{{place.name}}</text>
+        <text class="place-card__summary">{{place.summary}}</text>
+        <view class="place-card__tags">
+          <text
+            wx:for="{{place.tags}}"
+            wx:for-item="tag"
+            wx:key="*this"
+            class="place-card__tag"
+          >{{tag}}</text>
+        </view>
+      </navigator>
+    </view>
+    <view wx:else class="content-placeholder">
+      <text class="content-placeholder__label">暂无景点</text>
+      <text class="content-placeholder__hint">后续可以继续补充景点内容</text>
+    </view>
+  </view>
+
+  <view class="content-section content-section--food">
+    <view class="content-section__heading">
+      <view class="content-section__number">02</view>
+      <view class="content-section__text">
+        <text class="content-section__title">美食</text>
+        <text class="content-section__subtitle">不容错过的本地味道</text>
+      </view>
+    </view>
+    <view wx:if="{{foods.length}}" class="place-list">
+      <navigator
+        wx:for="{{foods}}"
+        wx:for-item="place"
+        wx:key="id"
+        class="place-card"
+        url="/pages/detail/detail?id={{place.id}}"
+      >
+        <text class="place-card__name">{{place.name}}</text>
+        <text class="place-card__summary">{{place.summary}}</text>
+        <view class="place-card__tags">
+          <text
+            wx:for="{{place.tags}}"
+            wx:for-item="tag"
+            wx:key="*this"
+            class="place-card__tag"
+          >{{tag}}</text>
+        </view>
+      </navigator>
+    </view>
+    <view wx:else class="content-placeholder">
+      <text class="content-placeholder__label">暂无美食</text>
+      <text class="content-placeholder__hint">后续可以继续补充美食内容</text>
+    </view>
+  </view>
+
+  <view class="content-section content-section--hotel">
+    <view class="content-section__heading">
+      <view class="content-section__number">03</view>
+      <view class="content-section__text">
+        <text class="content-section__title">酒店</text>
+        <text class="content-section__subtitle">方便休息的住宿选择</text>
+      </view>
+    </view>
+    <view wx:if="{{hotels.length}}" class="place-list">
+      <navigator
+        wx:for="{{hotels}}"
+        wx:for-item="place"
+        wx:key="id"
+        class="place-card"
+        url="/pages/detail/detail?id={{place.id}}"
+      >
+        <text class="place-card__name">{{place.name}}</text>
+        <text class="place-card__summary">{{place.summary}}</text>
+        <view class="place-card__tags">
+          <text
+            wx:for="{{place.tags}}"
+            wx:for-item="tag"
+            wx:key="*this"
+            class="place-card__tag"
+          >{{tag}}</text>
+        </view>
+      </navigator>
+    </view>
+    <view wx:else class="content-placeholder">
+      <text class="content-placeholder__label">暂无酒店</text>
+      <text class="content-placeholder__hint">后续可以继续补充酒店内容</text>
+    </view>
+  </view>
+</view>

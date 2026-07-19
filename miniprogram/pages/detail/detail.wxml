@@ -1,0 +1,47 @@
+<!-- pages/detail/detail.wxml -->
+<view class="detail-page">
+  <view class="detail-card">
+    <text class="detail-card__name">{{place.name}}</text>
+    <text class="detail-card__summary">{{place.summary}}</text>
+
+    <view class="detail-section detail-section--description">
+      <text class="detail-section__title">详细介绍</text>
+      <text class="detail-section__description">{{place.description}}</text>
+    </view>
+
+    <view class="detail-section">
+      <text class="detail-section__title">地址</text>
+      <text class="detail-section__content">{{place.address}}</text>
+    </view>
+
+    <view class="detail-section">
+      <text class="detail-section__title">推荐理由</text>
+      <text class="detail-section__content">{{place.recommend}}</text>
+    </view>
+
+    <view class="detail-section">
+      <text class="detail-section__title">地点标签</text>
+      <view class="tag-list">
+        <text
+          wx:for="{{place.tags}}"
+          wx:key="*this"
+          class="tag-item"
+        >{{item}}</text>
+      </view>
+    </view>
+
+    <view class="detail-section">
+      <text class="detail-section__title">实用提醒</text>
+      <view class="tip-list">
+        <view
+          wx:for="{{place.tips}}"
+          wx:key="*this"
+          class="tip-item"
+        >
+          <text class="tip-item__marker">•</text>
+          <text class="tip-item__text">{{item}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

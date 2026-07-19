@@ -1,0 +1,161 @@
+/* pages/region/region.wxss */
+page {
+  min-height: 100%;
+  background: #f7f3ea;
+  color: #27231f;
+}
+
+.region-page {
+  padding: 48rpx 32rpx calc(56rpx + env(safe-area-inset-bottom));
+}
+
+.region-header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 52rpx;
+  padding: 16rpx 8rpx 40rpx;
+  border-bottom: 2rpx solid rgba(94, 75, 52, 0.14);
+}
+
+.region-header__eyebrow {
+  color: #a24b32;
+  font-size: 20rpx;
+  font-weight: 600;
+  letter-spacing: 4rpx;
+}
+
+.region-header__title {
+  margin-top: 12rpx;
+  font-size: 56rpx;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 2rpx;
+}
+
+.region-header__summary {
+  margin-top: 16rpx;
+  color: #756d63;
+  font-size: 27rpx;
+  line-height: 1.7;
+}
+
+.place-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.place-card {
+  display: flex;
+  flex-direction: column;
+  padding: 30rpx;
+  border: 2rpx solid rgba(109, 91, 69, 0.12);
+  border-radius: 28rpx;
+  background: rgba(255, 255, 255, 0.64);
+  box-shadow: 0 12rpx 36rpx rgba(76, 58, 36, 0.08);
+}
+
+.place-card__name {
+  font-size: 32rpx;
+  font-weight: 650;
+}
+
+.place-card__summary {
+  margin-top: 12rpx;
+  color: #756d63;
+  font-size: 24rpx;
+  line-height: 1.65;
+}
+
+.place-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  margin-top: 20rpx;
+}
+
+.place-card__tag {
+  padding: 8rpx 16rpx;
+  border-radius: 18rpx;
+  background: #eee5d6;
+  color: #685846;
+  font-size: 20rpx;
+  line-height: 1.2;
+}
+
+.content-section {
+  margin-bottom: 44rpx;
+}
+
+.content-section__heading {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+  padding: 0 8rpx;
+}
+
+.content-section__number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64rpx;
+  height: 64rpx;
+  flex: none;
+  border-radius: 20rpx;
+  color: #584c3e;
+  font-size: 21rpx;
+  font-weight: 650;
+}
+
+.content-section--attraction .content-section__number {
+  background: #ead8c0;
+}
+
+.content-section--food .content-section__number {
+  background: #dce4d2;
+}
+
+.content-section--hotel .content-section__number {
+  background: #e5d7d1;
+}
+
+.content-section__text {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20rpx;
+}
+
+.content-section__title {
+  font-size: 34rpx;
+  font-weight: 650;
+}
+
+.content-section__subtitle {
+  margin-top: 4rpx;
+  color: #948a7e;
+  font-size: 22rpx;
+}
+
+.content-placeholder {
+  display: flex;
+  min-height: 180rpx;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2rpx dashed rgba(109, 91, 69, 0.24);
+  border-radius: 28rpx;
+  background: rgba(255, 255, 255, 0.42);
+  box-sizing: border-box;
+}
+
+.content-placeholder__label {
+  color: #665a4d;
+  font-size: 27rpx;
+  font-weight: 600;
+}
+
+.content-placeholder__hint {
+  margin-top: 10rpx;
+  color: #9a9187;
+  font-size: 22rpx;
+}

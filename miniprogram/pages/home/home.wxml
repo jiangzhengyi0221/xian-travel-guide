@@ -1,0 +1,74 @@
+<!-- pages/home/home.wxml -->
+<view class="home-page">
+  <view class="hero">
+    <text class="hero__eyebrow">XI'AN TRAVEL GUIDE</text>
+    <text class="hero__title">西安游迹</text>
+    <text class="hero__subtitle">我的西安三日旅行手册</text>
+  </view>
+
+  <view class="section map-section">
+    <view class="section-heading">
+      <text class="section-heading__title">探索西安</text>
+      <text class="section-heading__hint">选择区域，查看旅行灵感</text>
+    </view>
+
+    <view class="map-placeholder">
+      <view class="map-placeholder__ring map-placeholder__ring--large"></view>
+      <view class="map-placeholder__ring map-placeholder__ring--small"></view>
+      <text class="map-placeholder__label">西安示意地图</text>
+
+      <view class="map-region-list">
+        <button
+          wx:for="{{regions}}"
+          wx:key="id"
+          data-id="{{item.id}}"
+          bindtap="goToRegion"
+          class="map-region map-region--theme-{{index % 5}}"
+        >{{item.name}}</button>
+      </view>
+    </view>
+  </view>
+
+  <view class="section region-section">
+    <view class="section-heading">
+      <text class="section-heading__title">旅行区域</text>
+      <text class="section-heading__hint">{{regions.length}} 个区域，发现不同西安印象</text>
+    </view>
+
+    <view class="region-list">
+      <view
+        wx:for="{{regions}}"
+        wx:key="id"
+        data-id="{{item.id}}"
+        bindtap="goToRegion"
+        class="region-card region-card--theme-{{index % 5}}"
+      >
+        <view class="region-card__content">
+          <text class="region-card__index">{{index + 1 >= 10 ? '' : '0'}}{{index + 1}}</text>
+          <view class="region-card__text">
+            <text class="region-card__name">{{item.name}}</text>
+            <text class="region-card__description">{{item.summary}}</text>
+            <view class="region-card__tags">
+              <text
+                wx:for="{{item.tags}}"
+                wx:for-item="tag"
+                wx:key="*this"
+                class="region-card__tag"
+              >{{tag}}</text>
+            </view>
+          </view>
+        </view>
+        <text class="region-card__arrow">→</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="itinerary-entry">
+    <view class="itinerary-entry__icon">3日</view>
+    <view class="itinerary-entry__text">
+      <text class="itinerary-entry__title">我的三日行程</text>
+      <text class="itinerary-entry__description">按天查看已经安排好的旅行计划</text>
+    </view>
+    <text class="itinerary-entry__arrow">→</text>
+  </view>
+</view>
