@@ -59,64 +59,27 @@ page {
   font-size: 22rpx;
 }
 
-.map-placeholder {
-  position: relative;
+.map-frame {
   height: 480rpx;
   overflow: hidden;
   border: 2rpx solid rgba(125, 97, 64, 0.16);
   border-radius: 32rpx;
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.16) 2rpx, transparent 2rpx),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.16) 2rpx, transparent 2rpx),
-    #d9cdb6;
-  background-size: 56rpx 56rpx;
+  background: #d9cdb6;
   box-shadow: 0 18rpx 50rpx rgba(76, 58, 36, 0.12);
 }
 
-.map-placeholder__ring {
-  position: absolute;
-  border: 2rpx dashed rgba(103, 79, 51, 0.25);
-  border-radius: 50%;
-}
-
-.map-placeholder__ring--large {
-  top: 60rpx;
-  left: 90rpx;
-  width: 440rpx;
-  height: 320rpx;
-  transform: rotate(-10deg);
-}
-
-.map-placeholder__ring--small {
-  top: 140rpx;
-  left: 240rpx;
-  width: 230rpx;
-  height: 190rpx;
-  transform: rotate(15deg);
-}
-
-.map-placeholder__label {
-  position: absolute;
-  right: 24rpx;
-  bottom: 20rpx;
-  color: rgba(71, 56, 38, 0.55);
-  font-size: 22rpx;
-  letter-spacing: 2rpx;
+.xian-map {
+  width: 100%;
+  height: 100%;
 }
 
 .map-region-list {
-  position: absolute;
-  z-index: 1;
-  top: 76rpx;
-  right: 36rpx;
-  bottom: 64rpx;
-  left: 36rpx;
   display: flex;
   flex-wrap: wrap;
-  align-content: center;
   align-items: center;
   justify-content: center;
   gap: 18rpx;
+  margin-top: 22rpx;
 }
 
 .map-region {

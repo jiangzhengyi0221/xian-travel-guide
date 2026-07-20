@@ -1,13 +1,13 @@
 // pages/region/region.js
 const regions = require('../../data/regions.js')
 const places = require('../../data/places.js')
+const foods = require('../../data/foods.js')
 
 Page({
   data: {
     region: {},
     attractions: [],
-    foods: [],
-    hotels: []
+    foods: []
   },
 
   onLoad(options) {
@@ -16,14 +16,14 @@ Page({
       ? places.filter(item => item.regionId === region.id)
       : []
     const attractions = regionPlaces.filter(item => item.type === 'attraction')
-    const foods = regionPlaces.filter(item => item.type === 'food')
-    const hotels = regionPlaces.filter(item => item.type === 'hotel')
+    const regionFoods = region
+      ? foods.filter(item => item.regionId === region.id)
+      : []
 
     this.setData({
       region: region || {},
       attractions,
-      foods,
-      hotels
+      foods: regionFoods
     })
   }
 })

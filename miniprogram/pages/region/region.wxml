@@ -48,25 +48,31 @@
         <text class="content-section__subtitle">不容错过的本地味道</text>
       </view>
     </view>
-    <view wx:if="{{foods.length}}" class="place-list">
-      <navigator
+    <view wx:if="{{foods.length}}" class="food-list">
+      <view
         wx:for="{{foods}}"
-        wx:for-item="place"
+        wx:for-item="food"
         wx:key="id"
-        class="place-card"
-        url="/pages/detail/detail?id={{place.id}}"
+        class="food-card"
       >
-        <text class="place-card__name">{{place.name}}</text>
-        <text class="place-card__summary">{{place.summary}}</text>
-        <view class="place-card__tags">
+        <view class="food-card__heading">
+          <text class="food-card__name">{{food.name}}</text>
+          <text class="food-card__price">{{food.price}}</text>
+        </view>
+        <view class="food-card__shop-row">
+          <text class="food-card__shop-label">推荐店铺</text>
+          <text class="food-card__shop">{{food.shop}}</text>
+        </view>
+        <text class="food-card__summary">{{food.summary}}</text>
+        <view class="food-card__tags">
           <text
-            wx:for="{{place.tags}}"
+            wx:for="{{food.tags}}"
             wx:for-item="tag"
             wx:key="*this"
-            class="place-card__tag"
+            class="food-card__tag"
           >{{tag}}</text>
         </view>
-      </navigator>
+      </view>
     </view>
     <view wx:else class="content-placeholder">
       <text class="content-placeholder__label">暂无美食</text>
@@ -74,37 +80,4 @@
     </view>
   </view>
 
-  <view class="content-section content-section--hotel">
-    <view class="content-section__heading">
-      <view class="content-section__number">03</view>
-      <view class="content-section__text">
-        <text class="content-section__title">酒店</text>
-        <text class="content-section__subtitle">方便休息的住宿选择</text>
-      </view>
-    </view>
-    <view wx:if="{{hotels.length}}" class="place-list">
-      <navigator
-        wx:for="{{hotels}}"
-        wx:for-item="place"
-        wx:key="id"
-        class="place-card"
-        url="/pages/detail/detail?id={{place.id}}"
-      >
-        <text class="place-card__name">{{place.name}}</text>
-        <text class="place-card__summary">{{place.summary}}</text>
-        <view class="place-card__tags">
-          <text
-            wx:for="{{place.tags}}"
-            wx:for-item="tag"
-            wx:key="*this"
-            class="place-card__tag"
-          >{{tag}}</text>
-        </view>
-      </navigator>
-    </view>
-    <view wx:else class="content-placeholder">
-      <text class="content-placeholder__label">暂无酒店</text>
-      <text class="content-placeholder__hint">后续可以继续补充酒店内容</text>
-    </view>
-  </view>
 </view>

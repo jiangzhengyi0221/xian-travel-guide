@@ -3,6 +3,10 @@
   <view class="detail-card">
     <text class="detail-card__name">{{place.name}}</text>
     <text class="detail-card__summary">{{place.summary}}</text>
+    <view class="detail-card__region">
+      <text class="detail-card__region-label">所属区域</text>
+      <text class="detail-card__region-name">{{region.name}}</text>
+    </view>
 
     <view class="detail-section detail-section--description">
       <text class="detail-section__title">详细介绍</text>

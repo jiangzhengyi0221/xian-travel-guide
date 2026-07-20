@@ -83,6 +83,91 @@ page {
   line-height: 1.2;
 }
 
+.food-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.food-card {
+  display: flex;
+  flex-direction: column;
+  padding: 30rpx;
+  border: 2rpx solid rgba(91, 109, 76, 0.12);
+  border-radius: 28rpx;
+  background: rgba(255, 255, 255, 0.64);
+  box-shadow: 0 12rpx 36rpx rgba(76, 58, 36, 0.08);
+}
+
+.food-card__heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20rpx;
+}
+
+.food-card__name {
+  flex: 1;
+  min-width: 0;
+  font-size: 32rpx;
+  font-weight: 650;
+  line-height: 1.4;
+}
+
+.food-card__price {
+  flex: none;
+  padding: 7rpx 14rpx;
+  border-radius: 16rpx;
+  background: #dce4d2;
+  color: #536348;
+  font-size: 20rpx;
+  font-weight: 600;
+}
+
+.food-card__shop-row {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 16rpx;
+}
+
+.food-card__shop-label {
+  flex: none;
+  margin-right: 12rpx;
+  color: #a24b32;
+  font-size: 21rpx;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.food-card__shop {
+  color: #514a42;
+  font-size: 23rpx;
+  line-height: 1.6;
+}
+
+.food-card__summary {
+  margin-top: 12rpx;
+  color: #756d63;
+  font-size: 24rpx;
+  line-height: 1.65;
+}
+
+.food-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  margin-top: 20rpx;
+}
+
+.food-card__tag {
+  padding: 8rpx 16rpx;
+  border-radius: 18rpx;
+  background: #edf1e8;
+  color: #59654f;
+  font-size: 20rpx;
+  line-height: 1.2;
+}
+
 .content-section {
   margin-bottom: 44rpx;
 }
@@ -113,10 +198,6 @@ page {
 
 .content-section--food .content-section__number {
   background: #dce4d2;
-}
-
-.content-section--hotel .content-section__number {
-  background: #e5d7d1;
 }
 
 .content-section__text {

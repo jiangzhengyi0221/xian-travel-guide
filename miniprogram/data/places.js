@@ -2,6 +2,8 @@ const places = [
   {
     id: 'shaanxi-history-museum',
     regionId: 'yanta',
+    latitude: 34.224325,
+    longitude: 108.955014,
     type: 'attraction',
     name: '陕西历史博物馆',
     summary: '华夏珍宝库，中国第一座大型现代化国家级博物馆，收藏170余万件文物。',
@@ -18,6 +20,8 @@ const places = [
   {
     id: 'dayanta',
     regionId: 'yanta',
+    latitude: 34.218230,
+    longitude: 108.964132,
     type: 'attraction',
     name: '大雁塔·大慈恩寺',
     summary: '大雁塔位于大慈恩寺内，是唐代长安佛教文化与玄奘译经历史的重要见证。',
@@ -34,6 +38,8 @@ const places = [
   {
     id: 'datang-everbright-city',
     regionId: 'yanta',
+    latitude: 34.213921,
+    longitude: 108.964691,
     type: 'attraction',
     name: '大唐不夜城',
     summary: '以盛唐文化为主题的开放式步行街区，夜间灯光、街景和演艺氛围突出。',
@@ -50,6 +56,8 @@ const places = [
   {
     id: 'tang-paradise',
     regionId: 'yanta',
+    latitude: 34.213395,
+    longitude: 108.974082,
     type: 'attraction',
     name: '大唐芙蓉园',
     summary: '以唐代皇家园林文化为主题的大型文化景区，园林建筑和夜间景观是主要看点。',
@@ -66,6 +74,8 @@ const places = [
   {
     id: 'xian-city-wall',
     regionId: 'beilin',
+    latitude: 34.251514,
+    longitude: 108.946973,
     type: 'attraction',
     name: '西安城墙',
     summary: '保存完整的明代城垣，可步行或骑行俯瞰老城街区与城门格局。',
@@ -82,6 +92,8 @@ const places = [
   {
     id: 'beilin-museum',
     regionId: 'beilin',
+    latitude: 34.253472,
+    longitude: 108.952803,
     type: 'attraction',
     name: '西安碑林博物馆',
     summary: '收藏展示历代碑刻、墓志和石刻艺术，是理解中国书法与石刻文献的重要博物馆。',
@@ -98,6 +110,8 @@ const places = [
   {
     id: 'shuyuanmen',
     regionId: 'beilin',
+    latitude: 34.252922,
+    longitude: 108.947899,
     type: 'attraction',
     name: '书院门文化街',
     summary: '以书画、文房用品和传统文化店铺为特色的老城步行街。',
@@ -114,6 +128,8 @@ const places = [
   {
     id: 'xian-bell-tower',
     regionId: 'center',
+    latitude: 34.259425,
+    longitude: 108.946998,
     type: 'attraction',
     name: '西安钟楼',
     summary: '位于西安老城中心的明代建筑，是观察四条大街和城市中轴线的重要地标。',
@@ -130,6 +146,8 @@ const places = [
   {
     id: 'xian-drum-tower',
     regionId: 'center',
+    latitude: 34.260173,
+    longitude: 108.943489,
     type: 'attraction',
     name: '西安鼓楼',
     summary: '与钟楼相望的明代鼓楼，连接北院门街区，是老城中心的重要历史建筑。',
@@ -146,7 +164,9 @@ const places = [
   {
     id: 'huimin-street',
     regionId: 'lianhu',
-    type: 'food',
+    latitude: 34.261779,
+    longitude: 108.943576,
+    type: 'attraction',
     name: '回民街',
     summary: '汇集多种西安特色小吃和老城烟火气的美食街区。',
     description: '回民街位于西安钟鼓楼以北，通常所说的“回民街”并非一条单独街道，而是由北院门、北广济街、西羊市、大皮院、化觉巷等多条街巷组成的回坊文化区域。这里逐渐形成回族聚居和传统商贸空间，长期保持宗教生活、社区生活与餐饮经营相互交织的城市形态。\n\n北院门、西羊市和化觉巷等街巷构成常见的旅游步行路线，鼓楼、牌坊、青石街面和沿街商铺形成鲜明的老城景观。区域内分布多座不同时期的清真寺，其中化觉巷清真大寺最具代表性。清真寺、居民院落和商业街并存，使回民街不仅是美食目的地，也是观察西安多元文化传统的重要区域。\n\n这里集中分布泡馍、肉夹馍、腊牛羊肉、糕点和各类清真小吃。游览时不必只停留在最热闹的北院门主街，可以继续走进西羊市、大皮院等街巷，少量多次地尝试不同食物，更完整地感受回坊的历史与日常烟火气。',
@@ -162,7 +182,9 @@ const places = [
   {
     id: 'sajinqiao',
     regionId: 'lianhu',
-    type: 'food',
+    latitude: 34.266363,
+    longitude: 108.932643,
+    type: 'attraction',
     name: '洒金桥',
     summary: '以早餐、小吃和社区餐饮为特色的老城街区，生活气息比热门景区更浓。',
     description: '洒金桥位于西安市莲湖区回坊内，是一条延续老城生活肌理的狭长街巷。关于“洒金桥”名称，民间流传着施粥时米粒在阳光下如碎金闪烁、以及古代贡品通行道路等不同传说。无论名称源流如何，这条街长期与周边居民生活和回坊商业紧密相连。\n\n与北院门等热门旅游街段相比，洒金桥更突出早餐、社区餐饮和本地日常消费。街道两侧分布肉丸胡辣汤、腊牛肉夹馍、酸汤水饺等西安和回坊风味，许多店铺空间不大，却依靠长期经营形成稳定口碑。狭窄街面、居民院落和连续小店共同构成浓厚的市井氛围。\n\n洒金桥适合安排在早晨或上午，与钟楼、鼓楼和回民街串联游览。这里的价值不只是寻找某一家“网红店”，而是边走边观察老城居民的饮食习惯。游览时应尊重社区生活，避免堵塞道路，并根据排队情况灵活选择店铺。',
@@ -178,6 +200,8 @@ const places = [
   {
     id: 'terracotta-warriors',
     regionId: 'lintong',
+    latitude: 34.386005,
+    longitude: 109.282754,
     type: 'attraction',
     name: '秦始皇兵马俑博物馆',
     summary: '以秦始皇陵兵马俑陪葬坑为核心的遗址博物馆，展示秦代军阵、制度与工艺。',
@@ -194,6 +218,8 @@ const places = [
   {
     id: 'huaqing-palace',
     regionId: 'lintong',
+    latitude: 34.363592,
+    longitude: 109.212598,
     type: 'attraction',
     name: '华清宫',
     summary: '依骊山而建的历史文化景区，包含唐代皇家温泉遗址与近现代历史遗迹。',
