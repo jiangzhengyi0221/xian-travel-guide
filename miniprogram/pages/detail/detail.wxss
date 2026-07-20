@@ -31,6 +31,27 @@ page {
   line-height: 1.7;
 }
 
+.detail-card__region {
+  display: flex;
+  align-items: center;
+  margin-top: 22rpx;
+}
+
+.detail-card__region-label {
+  margin-right: 14rpx;
+  color: #948a7e;
+  font-size: 22rpx;
+}
+
+.detail-card__region-name {
+  padding: 7rpx 16rpx;
+  border-radius: 18rpx;
+  background: #eee5d6;
+  color: #685846;
+  font-size: 21rpx;
+  font-weight: 600;
+}
+
 .detail-section {
   display: flex;
   flex-direction: column;

@@ -12,21 +12,17 @@
       <text class="section-heading__hint">选择区域，查看旅行灵感</text>
     </view>
 
-    <view class="map-placeholder">
-      <view class="map-placeholder__ring map-placeholder__ring--large"></view>
-      <view class="map-placeholder__ring map-placeholder__ring--small"></view>
-      <text class="map-placeholder__label">西安示意地图</text>
-
-      <view class="map-region-list">
-        <button
-          wx:for="{{regions}}"
-          wx:key="id"
-          data-id="{{item.id}}"
-          bindtap="goToRegion"
-          class="map-region map-region--theme-{{index % 5}}"
-        >{{item.name}}</button>
-      </view>
+    <view class="map-frame">
+      <map
+        class="xian-map"
+        latitude="{{mapLatitude}}"
+        longitude="{{mapLongitude}}"
+        scale="{{mapScale}}"
+        markers="{{markers}}"
+        bindmarkertap="goToPlaceDetail"
+      ></map>
     </view>
+
   </view>
 
   <view class="section region-section">

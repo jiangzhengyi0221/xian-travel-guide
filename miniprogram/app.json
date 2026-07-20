@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/food/food",
     "pages/region/region",
     "pages/detail/detail",
     "pages/index/index"

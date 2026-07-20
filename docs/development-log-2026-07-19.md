@@ -1,6 +1,6 @@
 # 《西安游迹》开发对话纪要与交接记录
 
-> 日期：2026-07-19  
+> 日期：2026-07-19 至 2026-07-20
 > 用途：记录本次开发对话、关键决定和当前项目状态，供下一次继续开发前快速恢复上下文。  
 > 说明：本文是按开发过程整理的结构化对话纪要，不包含终端工具的冗长原始输出。
 
@@ -8,11 +8,11 @@
 
 《西安游迹》是一款使用微信原生小程序开发的个人西安旅行手册，主要用于：
 
-- 按区域查看西安景点、美食和酒店。
+- 按区域查看西安景点和美食。
 - 从区域攻略页进入地点详情页。
 - 查看地点简介、详细介绍、地址、推荐理由和实用提醒。
 - 后续增加三日行程页面。
-- 使用本地数据，不使用服务器、数据库、登录和地图 API。
+- 使用本地数据，不使用服务器、数据库、登录和第三方地图 API。
 
 第一版保持简单，适合初学者理解和维护。
 
@@ -253,6 +253,28 @@ description → 详情页多段完整介绍
 - 首页区域卡片显示 `regions.tags`。
 - 删除 `region.wxss` 中未使用的 `.place-section*` 遗留样式。
 
+### 3.11 建立 Git 和 GitHub 版本管理
+
+阶段开发完成后，对项目版本管理进行了修复和初始化：
+
+- 确认原有 `.git` 是空目录，不是有效 Git 仓库。
+- 在确认项目代码完整后，删除空的 `.git` 并重新执行 Git 初始化。
+- 默认分支设置为 `main`。
+- 新增根目录 `.gitignore`，忽略微信开发者工具的本机个人配置 `miniprogram/project.private.config.json`。
+- 创建首次提交：`370c73b Initial commit: 西安游迹小程序基础版本`。
+- 创建并连接 GitHub 仓库 `jiangzhengyi0221/xian-travel-guide`。
+- 将本地 `main` 分支成功推送到 GitHub，并建立 `origin/main` 跟踪关系。
+
+随后在项目根目录增加 `README.md`，内容包括项目简介、当前功能、技术栈和 `v0.98` 完成情况，并创建提交：
+
+```text
+2424f11 docs: 添加项目 README
+```
+
+README 已同步到 GitHub 仓库首页。当前 Git 提交和 GitHub 远程内容一致。
+
+补充说明：Git 的提交和推送功能已经可用；GitHub CLI（`gh`）中保存的旧 token 仍然失效。该问题不影响普通 `git push`，以后需要使用 `gh` 创建 Pull Request 或 Issue 时，应重新执行 `gh auth login -h github.com`。
+
 ## 4. 当前数据结构
 
 ### 4.1 区域
@@ -266,12 +288,14 @@ description → 详情页多段完整介绍
 }
 ```
 
-### 4.2 地点
+### 4.2 景点/地点
 
 ```js
 {
   id,
   regionId,
+  latitude,
+  longitude,
   type,
   name,
   summary,
@@ -291,7 +315,8 @@ description → 详情页多段完整介绍
 
 - `id`：地点唯一编号。
 - `regionId`：关联 `regions.js` 中的区域 ID。
-- `type`：`attraction`、`food` 或 `hotel`。
+- `type`：当前统一为 `attraction`；具体美食已拆分至 `foods.js`。
+- `latitude`、`longitude`：GCJ-02 数字坐标，用于微信原生地图 marker。
 - `summary`：区域页短摘要。
 - `description`：详情页多段介绍。
 - `address`：地点地址。
@@ -303,14 +328,40 @@ description → 详情页多段完整介绍
 - `tags`：标签数组。
 - `image`：图片路径，目前为空字符串。
 
+### 4.3 美食
+
+```js
+{
+  id,
+  regionId,
+  latitude,
+  longitude,
+  type,
+  name,
+  shop,
+  summary,
+  description,
+  address,
+  price,
+  recommend,
+  tips,
+  tags,
+  image
+}
+```
+
+美食集中保存在 `miniprogram/data/foods.js`。坐标为可选字段：只有能够确认固定推荐门店位置的数据才增加数字坐标，当前已有 2 条。
+
 ## 5. 当前页面流程
 
 ```text
 首页 home
-  ↓ 点击区域地图按钮或区域卡片
-区域攻略页 region?id=区域ID
-  ↓ 点击地点卡片
-地点详情页 detail?id=地点ID
+  ├── 点击区域卡片 → 区域攻略页 region?id=区域ID
+  └── 点击地图 marker → 地点详情页 detail?id=地点ID
+
+区域攻略页 region
+  ├── places.js 按 regionId 筛选景点
+  └── foods.js 按 regionId 筛选美食
 ```
 
 详情页当前显示：
@@ -334,6 +385,8 @@ description → 详情页多段完整介绍
 
 ```text
 xian-travel-guide/
+├── .gitignore
+├── README.md
 ├── docs/
 │   ├── product.md
 │   ├── content-plan.md
@@ -344,9 +397,11 @@ xian-travel-guide/
     ├── app.wxss
     ├── data/
     │   ├── regions.js
-    │   └── places.js
+    │   ├── places.js
+    │   └── foods.js
     └── pages/
         ├── home/
+        ├── food/
         ├── region/
         ├── detail/
         └── index/
@@ -356,16 +411,24 @@ xian-travel-guide/
 
 - `regions.js` 包含 5 个区域。
 - `places.js` 包含 13 个地点。
+- `foods.js` 包含 9 条美食数据。
 - 区域 ID 无重复。
 - 地点 ID 无重复。
 - 所有地点 `regionId` 都能找到对应区域。
 - 所有地点均具有完整字段。
 - 所有 `description` 都是非空字符串并包含 3 个段落。
 - 所有 `tips` 和 `tags` 均为数组。
-- 首页地图和区域卡片均由 `regions.js` 驱动。
+- 首页区域卡片由 `regions.js` 驱动。
+- 首页使用微信原生 `map`，13 个 marker 均由 `places.js` 坐标生成。
+- marker 包含地点名常显 callout，点击后能映射到稳定的地点 ID。
 - 5 个区域都能生成正确跳转地址。
-- 区域页能按区域和地点类型筛选数据。
-- 详情页能按地点 ID 查找并显示完整地点内容。
+- 区域页能按区域分别筛选 `places.js` 景点和 `foods.js` 美食。
+- 区域页酒店预留字段、筛选、展示区域及专用样式已全部删除。
+- 详情页能按地点 ID 查找完整地点内容，并通过 `regions.js` 显示所属区域。
+- 本地 Git 仓库有效，默认分支为 `main`。
+- 本地 `main` 已连接并跟踪 GitHub 的 `origin/main`。
+- 项目基础版本和 README 已成功上传到 GitHub。
+- `miniprogram/project.private.config.json` 已被忽略，不会进入版本库。
 
 ## 8. 尚未完成和建议的下一步
 
@@ -382,11 +445,11 @@ xian-travel-guide/
 6. 准备正式西安示意地图和地点图片。
 7. 图片接入前进行压缩并确认使用权限。
 8. 增加基本页面分享能力。
-9. 补充酒店数据，使区域页“酒店”分类不再全部为空。
+9. 为具有固定推荐门店的美食逐步补充可靠的 GCJ-02 坐标。
 
 ### 可维护性优化
 
-10. 区域页景点、美食、酒店三处地点卡片结构目前重复，可提取为通用组件。
+10. 后续开发美食详情和地图定位时，复用现有 ID 查询与原生地图数据流。
 11. 正式地图需要地理位置时，可在区域数据中增加地图坐标字段。
 12. 当前 5 色主题按数组顺序循环；若以后要求区域颜色永久固定，可将主题键加入区域数据。
 
@@ -398,7 +461,8 @@ xian-travel-guide/
 2. `docs/product.md`
 3. `miniprogram/data/regions.js`
 4. `miniprogram/data/places.js`
-5. 准备修改的具体页面文件
+5. `miniprogram/data/foods.js`
+6. 准备修改的具体页面文件
 
 ## 10. 给下一次协作的备注
 
@@ -406,4 +470,67 @@ xian-travel-guide/
 - 用户偏好分阶段开发，每次限制修改范围，不应越界修改其他页面。
 - 修改完成后应说明验证结果和下一步建议。
 - 旅游开放时间、票价和预约规则可能变化，发布或出发前应再次核对官方信息。
-- 当前项目目录中的 Git 状态曾无法被正常识别，后续如需版本管理，应先确认仓库是否正确初始化。
+- Git 仓库已完成初始化并连接 GitHub；后续每完成一个独立阶段，应创建清晰的 Git 提交并推送到 `main`，或在功能较复杂时使用独立分支和 Pull Request。
+
+## 11. 2026-07-20 阶段开发记录
+
+### 11.1 美食数据与页面
+
+- 新建 `miniprogram/data/foods.js`，录入 9 条西安美食。
+- 美食 ID 使用无横杠英文格式，并通过 `regionId` 关联区域。
+- 新建并注册 `pages/food/food`，支持通过 `regionId` 查询参数筛选；无参数时显示动态区域选择，不直接展示全部美食。
+- 美食独立首页入口曾短暂接入，产品方向调整为“区域优先”后已从首页移除；food 页面和数据文件继续保留。
+- 当前仅“肉夹馍+凉皮+冰峰（三件套）”与“葫芦鸡”具有已确认的 GCJ-02 数字坐标；冰峰等无固定或未确认门店坐标的数据不强行补录。
+
+### 11.2 区域攻略成为核心入口
+
+- `region.js` 同时读取 `regions.js`、`places.js`、`foods.js`。
+- 当前区域 ID 分别驱动景点和美食筛选，页面不写死旅游数据。
+- 美食卡片展示名称、推荐店铺、简介、价格和标签，暂不跳转详情。
+- 回民街、洒金桥从 `food` 类型调整为 `attraction`，仍归属 `lianhu`；具体食物只保存在 `foods.js`。
+- 产品暂时取消酒店模块；区域页的 `hotels` 数据字段、酒店筛选、完整 WXML 区块和酒店专用样式已删除。
+
+### 11.3 首页原生地图与景点 marker
+
+- 首页原地图占位区域替换为微信原生 `<map>` 组件。
+- 默认中心为西安市中心：纬度 `34.341568`、经度 `108.940174`，缩放级别 `12`。
+- `places.js` 的 13 个地点均增加 GCJ-02 数字坐标。
+- 首页从 `places.js` 动态生成 marker，未在页面中手写坐标。
+- 每个 marker 包含数字 ID、坐标、名称、`32×32` 尺寸，以及常显地点名称的 callout。
+- 地图下方与“旅行区域”重复的区域快捷按钮已从 WXML 删除，原有区域卡片和跳转逻辑保留。
+
+### 11.4 marker 到景点详情的数据流
+
+```text
+places.js
+  ↓ 生成 markers 和 markerId → place.id 映射
+首页 map 的 bindmarkertap
+  ↓ goToPlaceDetail()
+wx.navigateTo('/pages/detail/detail?id=place.id')
+  ↓
+detail.js 查询 places.js，并按 regionId 查询 regions.js
+```
+
+详情页在原有内容基础上增加“所属区域”，未引入图片、路线、酒店或第三方 API。
+
+### 11.5 开发者工具提示
+
+- 微信基础库曾提示 marker 必须提供 `width` 和 `height`，已通过为所有 marker 设置 `32` 修复。
+- `subPageFrameEndTime of null`、`WAServiceMainContext.js timeout` 和 SharedArrayBuffer 提示来自微信开发者工具运行环境，项目代码中不存在对应字段。
+- 若再次出现内部超时，优先更新开发者工具、关闭自动热重载、清除缓存并重启；不要为此修改业务代码。
+
+### 11.6 下一阶段建议
+
+建议继续按小步迭代推进：
+
+1. 创建美食详情页，通过美食 ID 从 `foods.js` 查询。
+2. 仅对具有有效坐标的美食显示“查看地图位置”。
+3. 再建立统一地图页，使景点、美食以及未来的行程节点使用一致的地图数据结构。
+4. 在微信开发者工具和真机中回归测试区域筛选、marker 点击和长文本布局。
+
+### 11.7 本次阶段收尾状态
+
+- 已在本地创建阶段分支 `agent/region-food-map` 并完成阶段提交。
+- 已完成 JS、JSON、WXML、页面注册、数据关联、坐标类型和 Git diff 格式检查。
+- 本次业务代码与交接文档已提交；`gpt-wed-dev/` 和微信开发者工具自动修改的 `miniprogram/project.config.json` 未纳入提交。
+- 远端推送尚未完成：当前环境连接 `github.com:443` 超时，GitHub 连接器对仓库写操作返回 403。网络或授权恢复后，应先推送 `agent/region-food-map`，再创建指向 `main` 的 Pull Request。
