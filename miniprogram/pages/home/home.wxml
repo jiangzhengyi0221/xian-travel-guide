@@ -9,7 +9,7 @@
   <view class="section map-section">
     <view class="section-heading">
       <text class="section-heading__title">探索西安</text>
-      <text class="section-heading__hint">选择区域，查看旅行灵感</text>
+      <text class="section-heading__hint">点击精选地标，查看景点详情</text>
     </view>
 
     <view class="map-frame">

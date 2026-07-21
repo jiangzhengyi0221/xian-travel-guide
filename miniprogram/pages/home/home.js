@@ -2,25 +2,60 @@
 const regions = require('../../data/regions.js')
 const places = require('../../data/places.js')
 
-const markerPlaces = places.filter(place => (
-  Number.isFinite(place.latitude) &&
-  Number.isFinite(place.longitude)
-))
+const featuredMarkerConfig = [
+  {
+    placeId: 'xian-bell-tower',
+    label: '钟楼'
+  },
+  {
+    placeId: 'dayanta',
+    label: '大雁塔'
+  },
+  {
+    placeId: 'terracotta-warriors',
+    label: '兵马俑'
+  }
+]
 
-const markerPlaceIds = markerPlaces.map(place => place.id)
+const featuredMarkerPlaces = featuredMarkerConfig
+  .map(config => {
+    const place = places.find(item => item.id === config.placeId)
 
-const markers = markerPlaces.map((place, index) => ({
-    id: index + 1,
+    if (
+      !place ||
+      !Number.isFinite(place.latitude) ||
+      !Number.isFinite(place.longitude)
+    ) {
+      return null
+    }
+
+    return {
+      place,
+      label: config.label
+    }
+  })
+  .filter(item => item)
+
+const markerIdToPlaceId = {}
+
+const markers = featuredMarkerPlaces.map(({ place, label }, index) => {
+  const markerId = index + 1
+
+  markerIdToPlaceId[markerId] = place.id
+
+  return {
+    id: markerId,
     latitude: place.latitude,
     longitude: place.longitude,
-    title: place.name,
+    title: label,
     width: 32,
     height: 32,
     callout: {
-      content: place.name,
+      content: label,
       display: 'ALWAYS'
     }
-  }))
+  }
+})
 
 Page({
   data: {
@@ -41,7 +76,7 @@ Page({
 
   goToPlaceDetail(event) {
     const markerId = Number(event.detail.markerId)
-    const placeId = markerPlaceIds[markerId - 1]
+    const placeId = markerIdToPlaceId[markerId]
 
     if (!placeId) {
       return
