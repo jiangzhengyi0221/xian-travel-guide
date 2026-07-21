@@ -8,6 +8,24 @@
       <text class="detail-card__region-name">{{region.name}}</text>
     </view>
 
+    <view class="travel-info">
+      <text class="travel-info__title">游览信息</text>
+      <view class="travel-info__list">
+        <view class="travel-info__item">
+          <text class="travel-info__label">开放时间</text>
+          <text class="travel-info__content">{{place.openTime}}</text>
+        </view>
+        <view class="travel-info__item">
+          <text class="travel-info__label">门票信息</text>
+          <text class="travel-info__content">{{place.ticket}}</text>
+        </view>
+        <view class="travel-info__item">
+          <text class="travel-info__label">建议游览时长</text>
+          <text class="travel-info__content">{{place.duration}}</text>
+        </view>
+      </view>
+    </view>
+
     <view class="detail-section detail-section--description">
       <text class="detail-section__title">详细介绍</text>
       <text class="detail-section__description">{{place.description}}</text>
@@ -38,7 +56,7 @@
       <text class="detail-section__title">实用提醒</text>
       <view class="tip-list">
         <view
-          wx:for="{{place.tips}}"
+          wx:for="{{place.notice}}"
           wx:key="*this"
           class="tip-item"
         >

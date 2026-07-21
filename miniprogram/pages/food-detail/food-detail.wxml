@@ -1,0 +1,76 @@
+<!-- pages/food-detail/food-detail.wxml -->
+<view class="food-detail-page">
+  <view wx:if="{{foodNotFound}}" class="error-state">
+    <text class="error-state__title">未找到美食内容</text>
+    <text class="error-state__description">该美食可能不存在，请返回上一页重新选择。</text>
+  </view>
+
+  <view wx:else class="detail-card">
+    <view class="detail-card__heading">
+      <text class="detail-card__type">{{food.type}}</text>
+      <text class="detail-card__price">参考价格 {{food.price}}</text>
+    </view>
+    <text class="detail-card__name">{{food.name}}</text>
+    <text class="detail-card__summary">{{food.summary}}</text>
+    <view class="detail-card__region">
+      <text class="detail-card__region-label">所属区域</text>
+      <text class="detail-card__region-name">{{region.name}}</text>
+    </view>
+
+    <image
+      wx:if="{{food.image}}"
+      class="food-image"
+      src="{{food.image}}"
+      mode="aspectFill"
+    ></image>
+    <view wx:else class="food-image-placeholder">
+      <text class="food-image-placeholder__icon">食</text>
+      <text class="food-image-placeholder__text">图片待添加</text>
+    </view>
+
+    <view class="detail-section detail-section--description">
+      <text class="detail-section__title">详细介绍</text>
+      <text class="detail-section__description">{{food.description}}</text>
+    </view>
+
+    <view class="detail-section">
+      <text class="detail-section__title">推荐店铺</text>
+      <text class="detail-section__content">{{food.shop}}</text>
+    </view>
+
+    <view class="detail-section">
+      <text class="detail-section__title">地址</text>
+      <text class="detail-section__content">{{food.address}}</text>
+    </view>
+
+    <view class="detail-section">
+      <text class="detail-section__title">推荐理由</text>
+      <text class="detail-section__content">{{food.recommend}}</text>
+    </view>
+
+    <view class="detail-section">
+      <text class="detail-section__title">美食标签</text>
+      <view class="tag-list">
+        <text
+          wx:for="{{food.tags}}"
+          wx:key="*this"
+          class="tag-item"
+        >{{item}}</text>
+      </view>
+    </view>
+
+    <view class="detail-section">
+      <text class="detail-section__title">注意事项</text>
+      <view class="tip-list">
+        <view
+          wx:for="{{food.tips}}"
+          wx:key="*this"
+          class="tip-item"
+        >
+          <text class="tip-item__marker">•</text>
+          <text class="tip-item__text">{{item}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
