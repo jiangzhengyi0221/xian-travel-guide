@@ -1,12 +1,12 @@
-/* pages/detail/detail.wxss */
+/* pages/food-detail/food-detail.wxss */
 page {
   min-height: 100%;
   background: #f7f3ea;
   color: #27231f;
 }
 
-.detail-page {
-  padding: 48rpx 32rpx;
+.food-detail-page {
+  padding: 48rpx 32rpx calc(48rpx + env(safe-area-inset-bottom));
 }
 
 .detail-card {
@@ -18,7 +18,31 @@ page {
   box-shadow: 0 12rpx 36rpx rgba(76, 58, 36, 0.08);
 }
 
+.detail-card__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20rpx;
+}
+
+.detail-card__type {
+  color: #a24b32;
+  font-size: 22rpx;
+  font-weight: 650;
+}
+
+.detail-card__price {
+  flex: none;
+  padding: 8rpx 16rpx;
+  border-radius: 18rpx;
+  background: #dce4d2;
+  color: #536348;
+  font-size: 21rpx;
+  font-weight: 600;
+}
+
 .detail-card__name {
+  margin-top: 18rpx;
   font-size: 46rpx;
   font-weight: 700;
   line-height: 1.3;
@@ -52,48 +76,40 @@ page {
   font-weight: 600;
 }
 
-.travel-info {
-  margin-top: 36rpx;
-  padding: 28rpx 30rpx;
-  border: 2rpx solid rgba(109, 91, 69, 0.12);
+.food-image,
+.food-image-placeholder {
+  width: 100%;
+  height: 320rpx;
+  margin-top: 32rpx;
   border-radius: 24rpx;
-  background: #fbfaf7;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
-.travel-info__title {
-  color: #a24b32;
-  font-size: 24rpx;
-  font-weight: 650;
-}
-
-.travel-info__list {
-  margin-top: 18rpx;
-}
-
-.travel-info__item {
+.food-image-placeholder {
   display: flex;
-  align-items: flex-start;
-  padding: 18rpx 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #edf1e8;
+  color: #66705c;
 }
 
-.travel-info__item + .travel-info__item {
-  border-top: 2rpx solid rgba(109, 91, 69, 0.1);
+.food-image-placeholder__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.72);
+  font-size: 38rpx;
+  font-weight: 700;
 }
 
-.travel-info__label {
-  width: 156rpx;
-  flex: none;
-  color: #756d63;
-  font-size: 23rpx;
-  font-weight: 600;
-  line-height: 1.65;
-}
-
-.travel-info__content {
-  flex: 1;
-  color: #4f4942;
-  font-size: 24rpx;
-  line-height: 1.65;
+.food-image-placeholder__text {
+  margin-top: 16rpx;
+  font-size: 22rpx;
 }
 
 .detail-section {
@@ -102,6 +118,10 @@ page {
   margin-top: 40rpx;
   padding-top: 32rpx;
   border-top: 2rpx solid rgba(109, 91, 69, 0.12);
+}
+
+.detail-section--description {
+  margin-top: 44rpx;
 }
 
 .detail-section__title {
@@ -115,10 +135,6 @@ page {
   color: #4f4942;
   font-size: 27rpx;
   line-height: 1.7;
-}
-
-.detail-section--description {
-  margin-top: 44rpx;
 }
 
 .detail-section__description {
@@ -141,8 +157,8 @@ page {
 .tag-item {
   padding: 9rpx 18rpx;
   border-radius: 20rpx;
-  background: #eee5d6;
-  color: #685846;
+  background: #edf1e8;
+  color: #59654f;
   font-size: 21rpx;
 }
 
@@ -171,4 +187,31 @@ page {
   color: #5e574f;
   font-size: 25rpx;
   line-height: 1.6;
+}
+
+.error-state {
+  display: flex;
+  min-height: 420rpx;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48rpx 36rpx;
+  border: 2rpx dashed rgba(109, 91, 69, 0.24);
+  border-radius: 28rpx;
+  background: rgba(255, 255, 255, 0.64);
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.error-state__title {
+  color: #665a4d;
+  font-size: 32rpx;
+  font-weight: 650;
+}
+
+.error-state__description {
+  margin-top: 16rpx;
+  color: #948a7e;
+  font-size: 24rpx;
+  line-height: 1.7;
 }

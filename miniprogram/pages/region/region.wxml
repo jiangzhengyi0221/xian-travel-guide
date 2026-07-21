@@ -49,11 +49,12 @@
       </view>
     </view>
     <view wx:if="{{foods.length}}" class="food-list">
-      <view
+      <navigator
         wx:for="{{foods}}"
         wx:for-item="food"
         wx:key="id"
         class="food-card"
+        url="/pages/food-detail/food-detail?id={{food.id}}"
       >
         <view class="food-card__heading">
           <text class="food-card__name">{{food.name}}</text>
@@ -72,7 +73,7 @@
             class="food-card__tag"
           >{{tag}}</text>
         </view>
-      </view>
+      </navigator>
     </view>
     <view wx:else class="content-placeholder">
       <text class="content-placeholder__label">暂无美食</text>

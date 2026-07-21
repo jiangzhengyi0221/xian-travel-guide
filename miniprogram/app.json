@@ -2,6 +2,7 @@
   "pages": [
     "pages/home/home",
     "pages/food/food",
+    "pages/food-detail/food-detail",
     "pages/region/region",
     "pages/detail/detail",
     "pages/index/index"
