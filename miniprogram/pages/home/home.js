@@ -63,7 +63,43 @@ Page({
     markers,
     mapLatitude: 34.341568,
     mapLongitude: 108.940174,
-    mapScale: 12
+    mapScale: 12,
+    showUserLocation: false,
+    isLocating: false
+  },
+
+  locateUser() {
+    if (this.data.isLocating) {
+      return
+    }
+
+    this.setData({
+      isLocating: true
+    })
+
+    wx.getLocation({
+      type: 'gcj02',
+      success: ({ latitude, longitude }) => {
+        this.setData({
+          mapLatitude: latitude,
+          mapLongitude: longitude,
+          mapScale: 14,
+          showUserLocation: true
+        })
+      },
+      fail: () => {
+        wx.showToast({
+          title: '无法获取当前位置，请检查定位权限或系统定位设置。',
+          icon: 'none',
+          duration: 3000
+        })
+      },
+      complete: () => {
+        this.setData({
+          isLocating: false
+        })
+      }
+    })
   },
 
   goToRegion(event) {

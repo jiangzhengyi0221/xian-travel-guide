@@ -147,6 +147,23 @@ page {
   word-break: break-all;
 }
 
+.reference-location-button {
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+  justify-content: center;
+  min-height: 72rpx;
+  margin-top: 22rpx;
+  padding: 0 28rpx;
+  border-radius: 36rpx;
+  background: #a24b32;
+  color: #ffffff;
+  font-size: 23rpx;
+  font-weight: 600;
+  line-height: 1.4;
+  box-shadow: 0 10rpx 28rpx rgba(113, 49, 31, 0.2);
+}
+
 .tag-list {
   display: flex;
   flex-wrap: wrap;

@@ -34,6 +34,11 @@
     <view class="detail-section">
       <text class="detail-section__title">地址</text>
       <text class="detail-section__content">{{place.address}}</text>
+      <navigator
+        wx:if="{{hasLocation}}"
+        class="reference-location-button"
+        url="/pages/place-map/place-map?id={{place.id}}"
+      >📍查看参考位置</navigator>
     </view>
 
     <view class="detail-section">

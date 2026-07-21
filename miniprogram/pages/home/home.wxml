@@ -19,8 +19,16 @@
         longitude="{{mapLongitude}}"
         scale="{{mapScale}}"
         markers="{{markers}}"
+        show-location="{{showUserLocation}}"
         bindmarkertap="goToPlaceDetail"
-      ></map>
+      >
+        <cover-view
+          class="location-control {{isLocating ? 'location-control--loading' : ''}}"
+          bindtap="locateUser"
+        >
+          <cover-view class="location-control__symbol">{{isLocating ? '…' : '◎'}}</cover-view>
+        </cover-view>
+      </map>
     </view>
 
   </view>

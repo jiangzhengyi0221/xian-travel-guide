@@ -5,7 +5,8 @@ Page({
   data: {
     food: {},
     region: {},
-    foodNotFound: false
+    foodNotFound: false,
+    hasLocation: false
   },
 
   onLoad(options) {
@@ -15,7 +16,8 @@ Page({
       this.setData({
         food: {},
         region: {},
-        foodNotFound: true
+        foodNotFound: true,
+        hasLocation: false
       })
       return
     }
@@ -25,7 +27,8 @@ Page({
     this.setData({
       food,
       region: region || {},
-      foodNotFound: false
+      foodNotFound: false,
+      hasLocation: Number.isFinite(food.latitude) && Number.isFinite(food.longitude)
     })
   }
 })

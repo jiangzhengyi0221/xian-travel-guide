@@ -5,7 +5,8 @@ const regions = require('../../data/regions.js')
 Page({
   data: {
     place: {},
-    region: {}
+    region: {},
+    hasLocation: false
   },
 
   onLoad(options) {
@@ -16,7 +17,10 @@ Page({
 
     this.setData({
       place: place || {},
-      region: region || {}
+      region: region || {},
+      hasLocation: Boolean(place) &&
+        Number.isFinite(place.latitude) &&
+        Number.isFinite(place.longitude)
     })
   }
 })
