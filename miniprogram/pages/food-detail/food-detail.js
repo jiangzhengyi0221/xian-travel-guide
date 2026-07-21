@@ -1,5 +1,6 @@
 const foods = require('../../data/foods.js')
 const regions = require('../../data/regions.js')
+const { openMapLocation } = require('../../utils/location-utils.js')
 
 Page({
   data: {
@@ -29,6 +30,19 @@ Page({
       region: region || {},
       foodNotFound: false,
       hasLocation: Number.isFinite(food.latitude) && Number.isFinite(food.longitude)
+    })
+  },
+
+  openNavigation() {
+    const food = this.data.food
+
+    if (!this.data.hasLocation || !food || !food.id) {
+      return
+    }
+
+    openMapLocation({
+      ...food,
+      name: food.shop || food.name
     })
   }
 })

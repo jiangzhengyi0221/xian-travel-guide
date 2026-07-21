@@ -1,6 +1,7 @@
 // pages/detail/detail.js
 const places = require('../../data/places.js')
 const regions = require('../../data/regions.js')
+const { openMapLocation } = require('../../utils/location-utils.js')
 
 Page({
   data: {
@@ -22,5 +23,13 @@ Page({
         Number.isFinite(place.latitude) &&
         Number.isFinite(place.longitude)
     })
+  },
+
+  openNavigation() {
+    if (!this.data.hasLocation) {
+      return
+    }
+
+    openMapLocation(this.data.place)
   }
 })

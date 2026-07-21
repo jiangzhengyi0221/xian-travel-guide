@@ -23,6 +23,12 @@
         bindmarkertap="goToPlaceDetail"
       >
         <cover-view
+          class="expand-control"
+          bindtap="goToFullMap"
+        >
+          <cover-view class="expand-control__symbol">全屏</cover-view>
+        </cover-view>
+        <cover-view
           class="location-control {{isLocating ? 'location-control--loading' : ''}}"
           bindtap="locateUser"
         >

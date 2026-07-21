@@ -49,5 +49,31 @@ Page({
     wx.setNavigationBarTitle({
       title: `${food.name}参考位置`
     })
+  },
+
+  goBackToFoodDetail(event) {
+    const markerId = Number(event.detail.markerId)
+    const food = this.data.food
+
+    if (markerId !== 1 || !food || !food.id) {
+      return
+    }
+
+    const pages = getCurrentPages()
+    const previousPage = pages[pages.length - 2]
+    const previousFood = previousPage &&
+      previousPage.data &&
+      previousPage.data.food
+
+    if (
+      !previousPage ||
+      previousPage.route !== 'pages/food-detail/food-detail' ||
+      !previousFood ||
+      previousFood.id !== food.id
+    ) {
+      return
+    }
+
+    wx.navigateBack()
   }
 })

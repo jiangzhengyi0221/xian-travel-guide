@@ -1,5 +1,3 @@
-// pages/home/home.js
-const regions = require('../../data/regions.js')
 const places = require('../../data/places.js')
 const mapPoints = require('../../data/map-points.js')
 const {
@@ -11,7 +9,9 @@ const {
 
 const SPECIAL_MARKER_ID_START = 1000
 
-const featuredMarkerPlaces = featuredMarkerConfig
+const markerIdToPlaceId = {}
+
+const markers = featuredMarkerConfig
   .map(config => {
     const place = places.find(item => item.id === config.placeId)
 
@@ -29,27 +29,24 @@ const featuredMarkerPlaces = featuredMarkerConfig
     }
   })
   .filter(item => item)
+  .map(({ place, label }, index) => {
+    const markerId = index + 1
 
-const markerIdToPlaceId = {}
+    markerIdToPlaceId[markerId] = place.id
 
-const markers = featuredMarkerPlaces.map(({ place, label }, index) => {
-  const markerId = index + 1
-
-  markerIdToPlaceId[markerId] = place.id
-
-  return {
-    id: markerId,
-    latitude: place.latitude,
-    longitude: place.longitude,
-    title: label,
-    width: 32,
-    height: 32,
-    callout: {
-      content: label,
-      display: 'ALWAYS'
+    return {
+      id: markerId,
+      latitude: place.latitude,
+      longitude: place.longitude,
+      title: label,
+      width: 32,
+      height: 32,
+      callout: {
+        content: label,
+        display: 'ALWAYS'
+      }
     }
-  }
-})
+  })
 
 const specialMarkers = mapPoints
   .filter(point => (
@@ -73,7 +70,6 @@ markers.push(...specialMarkers)
 
 Page({
   data: {
-    regions,
     markers,
     mapLatitude: defaultCenter.latitude,
     mapLongitude: defaultCenter.longitude,
@@ -116,18 +112,8 @@ Page({
     })
   },
 
-  goToFullMap() {
-    wx.navigateTo({
-      url: '/pages/full-map/full-map'
-    })
-  },
-
-  goToRegion(event) {
-    const { id } = event.currentTarget.dataset
-
-    wx.navigateTo({
-      url: `/pages/region/region?id=${id}`
-    })
+  goBack() {
+    wx.navigateBack()
   },
 
   goToPlaceDetail(event) {

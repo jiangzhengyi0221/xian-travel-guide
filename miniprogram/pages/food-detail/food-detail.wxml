@@ -46,6 +46,11 @@
         class="reference-location-button"
         url="/pages/food-map/food-map?id={{food.id}}"
       >查看参考位置</navigator>
+      <view
+        wx:if="{{hasLocation}}"
+        class="reference-location-button"
+        bindtap="openNavigation"
+      >打开地图导航</view>
     </view>
 
     <view class="detail-section">

@@ -28,6 +28,7 @@
         longitude="{{mapLongitude}}"
         scale="{{mapScale}}"
         markers="{{markers}}"
+        bindmarkertap="goBackToFoodDetail"
       ></map>
     </view>
 

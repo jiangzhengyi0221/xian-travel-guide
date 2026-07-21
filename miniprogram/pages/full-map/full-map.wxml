@@ -1,0 +1,26 @@
+<!-- pages/full-map/full-map.wxml -->
+<view class="full-map-page">
+  <map
+    class="full-map"
+    latitude="{{mapLatitude}}"
+    longitude="{{mapLongitude}}"
+    scale="{{mapScale}}"
+    markers="{{markers}}"
+    show-location="{{showUserLocation}}"
+    bindmarkertap="goToPlaceDetail"
+  >
+    <cover-view
+      class="map-control map-control--back"
+      bindtap="goBack"
+    >
+      <cover-view class="map-control__back-symbol">←</cover-view>
+    </cover-view>
+
+    <cover-view
+      class="map-control map-control--location {{isLocating ? 'map-control--loading' : ''}}"
+      bindtap="locateUser"
+    >
+      <cover-view class="map-control__location-symbol">{{isLocating ? '…' : '◎'}}</cover-view>
+    </cover-view>
+  </map>
+</view>

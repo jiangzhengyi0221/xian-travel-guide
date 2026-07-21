@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/full-map/full-map",
     "pages/food/food",
     "pages/food-detail/food-detail",
     "pages/food-map/food-map",
@@ -17,7 +18,7 @@
   },
   "permission": {
     "scope.userLocation": {
-      "desc": "用于在首页地图中显示您的当前位置"
+      "desc": "用于在地图中显示您的当前位置"
     }
   },
   "requiredPrivateInfos": [

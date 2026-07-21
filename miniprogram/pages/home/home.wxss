@@ -74,6 +74,28 @@ page {
   height: 100%;
 }
 
+.expand-control {
+  position: absolute;
+  right: 24rpx;
+  bottom: 116rpx;
+  display: flex;
+  width: 76rpx;
+  height: 76rpx;
+  align-items: center;
+  justify-content: center;
+  border: 2rpx solid rgba(109, 91, 69, 0.14);
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 10rpx 28rpx rgba(76, 58, 36, 0.2);
+}
+
+.expand-control__symbol {
+  color: #685846;
+  font-size: 20rpx;
+  font-weight: 650;
+  line-height: 1;
+}
+
 .location-control {
   position: absolute;
   right: 24rpx;

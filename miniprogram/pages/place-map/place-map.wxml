@@ -28,6 +28,8 @@
         longitude="{{mapLongitude}}"
         scale="{{mapScale}}"
         markers="{{markers}}"
+        include-points="{{includePoints}}"
+        bindmarkertap="goToNearbyPlaceDetail"
       ></map>
     </view>
 
