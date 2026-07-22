@@ -14,7 +14,11 @@ const foods = [
     recommend: '一餐可同时体验肉夹馍、凉皮和冰峰三种西安代表性味道。',
     tips: ['肉夹馍趁热食用口感更好', '可根据口味选择凉皮辣度', '饭点可能排队，建议预留等候时间'],
     tags: ['西安必吃', '经典三件套', '本地风味'],
-    image: ''
+    image: '/images/foods/roujiamo/cover.jpg',
+    images: [
+      '/images/foods/roujiamo/cover.jpg',
+      '/images/foods/roujiamo/detail-1.jpg'
+    ]
   },
   {
     id: 'bingfeng',
@@ -29,7 +33,11 @@ const foods = [
     recommend: '具有鲜明的西安城市记忆，与多种当地小吃搭配自然。',
     tips: ['冰镇后口感更清爽', '可搭配面食、肉夹馍或羊肉泡馍', '不同餐馆实际售价可能略有差异'],
     tags: ['西安饮品', '经典搭配', '本地记忆'],
-    image: ''
+    image: '/images/foods/bingfeng/cover.jpg',
+    images: [
+      '/images/foods/bingfeng/cover.jpg',
+      '/images/foods/bingfeng/detail-1.jpg'
+    ]
   },
   {
     id: 'yangroupaomo',
@@ -44,7 +52,11 @@ const foods = [
     recommend: '掰馍过程富有参与感，羊肉汤与馍充分融合后风味浓郁。',
     tips: ['馍尽量掰成较小且均匀的颗粒', '建议搭配糖蒜解腻', '食量较小时可先询问店内份量'],
     tags: ['西安必吃', '传统美食', '老城味道'],
-    image: ''
+    image: '/images/foods/yangroupaomo/cover.jpg',
+    images: [
+      '/images/foods/yangroupaomo/cover.jpg',
+      '/images/foods/yangroupaomo/detail-1.jpg'
+    ]
   },
   {
     id: 'biangbiangmian',
@@ -59,7 +71,12 @@ const foods = [
     recommend: '宽面筋道、油泼香气突出，能直观体验陕西面食特色。',
     tips: ['趁热拌匀后食用', '不能吃辣时提前说明辣度', '面条份量通常较足，可按食量点餐'],
     tags: ['陕西面食', '裤带面', '油泼辣子'],
-    image: ''
+    image: '/images/foods/biangbiangmian/cover.jpg',
+    images: [
+      '/images/foods/biangbiangmian/cover.jpg',
+      '/images/foods/biangbiangmian/detail-1.jpg',
+      '/images/foods/biangbiangmian/detail-2.jpg'
+    ]
   },
   {
     id: 'youpomian',
@@ -74,7 +91,11 @@ const foods = [
     recommend: '宽面筋道，现泼热油带来的蒜香和辣香十分突出。',
     tips: ['上桌后尽快拌匀，避免调料聚集', '不能吃辣时提前告知店家', '可搭配小菜或冰峰一起食用'],
     tags: ['陕西面食', '本地人推荐', '蒜香'],
-    image: ''
+    image: '/images/foods/youpomian/cover.jpg',
+    images: [
+      '/images/foods/youpomian/cover.jpg',
+      '/images/foods/youpomian/detail-1.jpg'
+    ]
   },
   {
     id: 'huluji',
@@ -91,7 +112,11 @@ const foods = [
     recommend: '陕菜代表菜之一，外酥里嫩，适合多人聚餐时共同品尝。',
     tips: ['建议多人用餐时点选', '整鸡份量较大，可搭配其他陕菜分享', '前往前确认具体门店和营业时间'],
     tags: ['陕菜名菜', '多人聚餐', '外酥里嫩'],
-    image: ''
+    image: '/images/foods/huluji/cover.jpg',
+    images: [
+      '/images/foods/huluji/cover.jpg',
+      '/images/foods/huluji/detail-1.jpg'
+    ]
   },
   {
     id: 'zenggao',
@@ -106,7 +131,11 @@ const foods = [
     recommend: '软糯香甜、枣香浓郁，适合作为洒金桥早餐体验。',
     tips: ['店铺凌晨开始营业，建议早些前往', '每日卖完即止', '口感偏甜，可先购买小份尝试'],
     tags: ['传统小吃', '洒金桥', '早餐'],
-    image: ''
+    image: '/images/foods/zenggao/cover.jpg',
+    images: [
+      '/images/foods/zenggao/cover.jpg',
+      '/images/foods/zenggao/detail-1.jpg'
+    ]
   },
   {
     id: 'shizibing',
@@ -121,7 +150,11 @@ const foods = [
     recommend: '现炸后外酥里甜，价格亲民，是洒金桥具有特色的甜味小吃。',
     tips: ['建议趁热食用', '刚出锅时内馅温度较高，注意烫口', '口味偏甜，可先买一个品尝'],
     tags: ['洒金桥', '现炸小吃', '甜食'],
-    image: ''
+    image: '/images/foods/shizibing/cover.jpg',
+    images: [
+      '/images/foods/shizibing/cover.jpg',
+      '/images/foods/shizibing/detail-1.jpg'
+    ]
   },
   {
     id: 'weisilihamburger',
@@ -136,7 +169,11 @@ const foods = [
     recommend: '本地网红餐厅，招牌汉堡和披萨适合在传统西安美食之外换换口味。',
     tips: ['招牌菜可优先尝试菠萝牛肉堡和榴莲披萨', '热门时段可能需要等位', '榴莲披萨风味浓郁，可根据个人喜好选择'],
     tags: ['西安本地', '网红餐厅', '小寨美食'],
-    image: ''
+    image: '/images/foods/weisilihamburger/cover.jpg',
+    images: [
+      '/images/foods/weisilihamburger/cover.jpg',
+      '/images/foods/weisilihamburger/detail-1.jpg'
+    ]
   }
 ]
 

@@ -38,10 +38,12 @@
 
   <block wx:if="{{hasSelectedRegion}}">
     <view class="food-list" wx:if="{{foods.length}}">
-      <view
+      <navigator
         class="food-card food-card--theme-{{index % 5}}"
         wx:for="{{foods}}"
         wx:key="id"
+        url="/pages/food-detail/food-detail?id={{item.id}}"
+        hover-class="none"
       >
         <image
           wx:if="{{item.image}}"
@@ -84,7 +86,7 @@
             >{{tag}}</text>
           </view>
         </view>
-      </view>
+      </navigator>
     </view>
 
     <view class="empty-state" wx:else>

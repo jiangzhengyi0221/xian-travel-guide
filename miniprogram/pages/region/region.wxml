@@ -56,6 +56,12 @@
         class="food-card"
         url="/pages/food-detail/food-detail?id={{food.id}}"
       >
+        <image
+          wx:if="{{food.image}}"
+          class="food-card__image"
+          src="{{food.image}}"
+          mode="aspectFill"
+        ></image>
         <view class="food-card__heading">
           <text class="food-card__name">{{food.name}}</text>
           <text class="food-card__price">{{food.price}}</text>

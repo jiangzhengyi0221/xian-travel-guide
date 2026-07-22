@@ -99,6 +99,13 @@ page {
   box-shadow: 0 12rpx 36rpx rgba(76, 58, 36, 0.08);
 }
 
+.food-card__image {
+  width: 100%;
+  height: 240rpx;
+  margin-bottom: 24rpx;
+  border-radius: 20rpx;
+}
+
 .food-card__heading {
   display: flex;
   align-items: flex-start;

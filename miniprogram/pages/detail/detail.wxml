@@ -26,6 +26,26 @@
       </view>
     </view>
 
+    <view wx:if="{{place.reservation}}" class="reservation-card">
+      <view class="reservation-card__header">
+        <text class="reservation-card__title">预约信息</text>
+        <text class="reservation-card__status reservation-card__status--{{place.reservation.status}}">
+          {{place.reservation.statusText}}
+        </text>
+      </view>
+      <text class="reservation-card__platform">{{place.reservation.platform}}</text>
+      <text class="reservation-card__instructions">{{place.reservation.instructions}}</text>
+      <button
+        wx:if="{{hasReservationAction}}"
+        class="reservation-button"
+        bindtap="openReservation"
+      >预约参观</button>
+      <view class="reservation-card__source">
+        <text>官方来源：{{place.reservation.sourceName}}</text>
+        <text>核实日期：{{place.reservation.verifiedAt}}</text>
+      </view>
+    </view>
+
     <view class="detail-section detail-section--description">
       <text class="detail-section__title">详细介绍</text>
       <text class="detail-section__description">{{place.description}}</text>

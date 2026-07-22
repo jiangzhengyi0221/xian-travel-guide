@@ -15,6 +15,21 @@ const places = [
     recommend: '适合作为西安历史旅行的第一站，先建立时间脉络，再游览城内古迹。',
     notice: ['热门日期预约较紧张，建议提前关注官方放票安排', '携带预约使用的有效身份证件', '馆藏丰富，可提前确定重点展厅'],
     tags: ['博物馆', '周秦汉唐', '必去'],
+    reservation: {
+      status: 'required',
+      type: 'officialAccount',
+      statusText: '需提前预约',
+      title: '预约参观',
+      platform: '陕西历史博物馆官方预约平台',
+      appId: '',
+      path: '',
+      url: '',
+      accountName: '陕西历史博物馆',
+      instructions: '本馆实行实名制免费预约参观。请在微信搜索并关注“陕西历史博物馆”，从“门票预约”进入官方预约系统。',
+      sourceName: '陕西历史博物馆官网《导览》',
+      sourceUrl: 'https://www.sxhm.com/guide.html',
+      verifiedAt: '2026-07-22'
+    },
     image: ''
   },
   {
@@ -33,6 +48,21 @@ const places = [
     recommend: '古塔、寺院和玄奘文化联系紧密，可与大雁塔广场及大唐不夜城连成一条路线。',
     notice: ['寺院与登塔通常分别购票', '进入宗教场所时保持安静并遵守现场规定', '可在傍晚衔接大唐不夜城夜游'],
     tags: ['唐代古塔', '佛教文化', '城市地标'],
+    reservation: {
+      status: 'unverified',
+      type: 'unverified',
+      statusText: '暂未确认',
+      title: '预约参观',
+      platform: '大慈恩寺·大雁塔官方渠道',
+      appId: '',
+      path: '',
+      url: '',
+      accountName: '',
+      instructions: '截至核实日，未在可访问的景区官方网站或政府公开页面中找到可可靠确认的官方预约入口，请以景区现场公告为准。',
+      sourceName: '西安市地方志办公室《大雁塔》',
+      sourceUrl: 'https://xadfz.xa.gov.cn/xadq/rwxa/1802954373708996609.html',
+      verifiedAt: '2026-07-22'
+    },
     image: ''
   },
   {
@@ -51,6 +81,21 @@ const places = [
     recommend: '适合夜间散步、观看街区演艺，并与大雁塔南广场安排在同一晚。',
     notice: ['建议傍晚后前往体验灯光氛围', '节假日晚间客流较大，注意保管随身物品', '演出时间以官方当天节目单为准'],
     tags: ['夜景', '步行街', '盛唐文化'],
+    reservation: {
+      status: 'notRequired',
+      type: 'none',
+      statusText: '无需预约',
+      title: '预约参观',
+      platform: '大唐不夜城步行街',
+      appId: '',
+      path: '',
+      url: '',
+      accountName: '',
+      instructions: '大唐不夜城是开放式步行街区，街区整体无需预约；独立演出、展馆或经营项目请以各项目官方公告为准。',
+      sourceName: '西安市文化和旅游局《科技赋能推动沉浸式文旅项目不断涌现（一）》',
+      sourceUrl: 'https://wlj.xa.gov.cn/xxgk/tzgg/1839203941456883713.html',
+      verifiedAt: '2026-07-22'
+    },
     image: ''
   },
   {
@@ -69,6 +114,21 @@ const places = [
     recommend: '适合喜欢园林建筑、唐文化演艺和夜景的游客，夜间观赏效果更完整。',
     notice: ['园区面积较大，穿着适合步行的鞋', '入园前查看当天演出时间和收费项目', '可从西门进入并预留夜景时间'],
     tags: ['皇家园林', '夜景', '演艺'],
+    reservation: {
+      status: 'available',
+      type: 'officialAccount',
+      statusText: '官方渠道可查询',
+      title: '预约参观',
+      platform: '大唐芙蓉园官方微信',
+      appId: '',
+      path: '',
+      url: '',
+      accountName: '大唐芙蓉园',
+      instructions: '景区官网确认“大唐芙蓉园”官方微信。请在公众号内核对当前门票、预约规则和演出项目后再操作。',
+      sourceName: '大唐芙蓉园官网《购票须知》',
+      sourceUrl: 'https://www.tangparadise.cn/guide.html',
+      verifiedAt: '2026-07-22'
+    },
     image: ''
   },
   {
@@ -87,6 +147,21 @@ const places = [
     recommend: '从城墙上观察西安老城结构非常直观，傍晚到夜间兼具日落与灯光景观。',
     notice: ['城墙周长较长，不建议在时间不足时徒步全程', '骑行服务受天气和现场运营影响', '确认计划使用的城门是否开放'],
     tags: ['古城墙', '骑行', '日落'],
+    reservation: {
+      status: 'available',
+      type: 'officialAccount',
+      statusText: '官方渠道可查询',
+      title: '预约参观',
+      platform: '西安城墙官方微信',
+      appId: '',
+      path: '',
+      url: '',
+      accountName: '遇见城墙',
+      instructions: '西安市政府页面确认“遇见城墙”为官方微信公众号。请在公众号内核对当前门票购买、预约规则和开放城门。',
+      sourceName: '西安市人民政府《Xi\'an City Wall starts soliciting Spring Festival couplets》',
+      sourceUrl: 'https://en.xa.gov.cn/MediaCenter/News/1691691411445501953.html',
+      verifiedAt: '2026-07-22'
+    },
     image: ''
   },
   {
@@ -105,6 +180,21 @@ const places = [
     recommend: '碑刻、书法和古建筑集中，适合与书院门、西安城墙安排为半日人文路线。',
     notice: ['建议提前通过官方渠道预约购票', '喜欢书法时可为碑林展室增加停留时间', '与书院门距离较近，适合步行衔接'],
     tags: ['碑刻', '书法', '博物馆'],
+    reservation: {
+      status: 'required',
+      type: 'web',
+      statusText: '需实名预约购票',
+      title: '预约参观',
+      platform: '西安碑林博物馆官方网站',
+      appId: '',
+      path: '',
+      url: 'https://www.beilin-museum.com/',
+      accountName: '西安碑林博物馆',
+      instructions: '官方说明观众可通过官方网站或官方微信服务号提前实名预约购票。小程序无法保证 web-view 业务域名，页面仅提供官方网址复制。',
+      sourceName: '西安碑林博物馆官方网站',
+      sourceUrl: 'https://www.beilin-museum.com/',
+      verifiedAt: '2026-07-22'
+    },
     image: ''
   },
   {
@@ -123,6 +213,21 @@ const places = [
     recommend: '适合在城墙和碑林博物馆之间步行游览，感受老城文化商业街的日常氛围。',
     notice: ['购买书画或工艺品前先确认价格和品质', '部分店铺晚上较早结束营业', '可与碑林博物馆连续游览'],
     tags: ['文化街', '书画', '老城漫步'],
+    reservation: {
+      status: 'notRequired',
+      type: 'none',
+      statusText: '无需预约',
+      title: '预约参观',
+      platform: '书院门文化街',
+      appId: '',
+      path: '',
+      url: '',
+      accountName: '',
+      instructions: '书院门属于三学街历史文化街区中的公共步行街，街区整体无需预约；沿街独立场馆按各自规则参观。',
+      sourceName: '西安市人民政府《西安历史文化名城保护规划（2020-2035年）》',
+      sourceUrl: 'https://www.xa.gov.cn/web_files/xian/file/2022/09/09/202209091042479845518.pdf',
+      verifiedAt: '2026-07-22'
+    },
     image: ''
   },
   {
@@ -141,6 +246,21 @@ const places = [
     recommend: '登楼可近距离看古建筑细节，并从城市中心观察西安老城道路格局。',
     notice: ['通过地下通道前往入口，不要横穿环岛车道', '准备同时参观鼓楼时可了解联票', '夜间外观亮灯适合拍照'],
     tags: ['城市地标', '明代建筑', '夜景'],
+    reservation: {
+      status: 'unverified',
+      type: 'unverified',
+      statusText: '暂未确认',
+      title: '预约参观',
+      platform: '西安市钟鼓楼博物馆官方渠道',
+      appId: '',
+      path: '',
+      url: '',
+      accountName: '',
+      instructions: '官方公开信息显示预约政策曾按时段调整，但截至核实日未找到可可靠确认的当前官方预约入口，请以博物馆最新公告和现场售票安排为准。',
+      sourceName: '陕西省文物局《多举措、强服务｜延时开放、取消预约、拓展内容》',
+      sourceUrl: 'https://wwj.shaanxi.gov.cn/wwsx/mtjj/202408/t20240827_2507560.html',
+      verifiedAt: '2026-07-22'
+    },
     image: ''
   },
   {
@@ -159,6 +279,21 @@ const places = [
     recommend: '可与钟楼连续参观，并从鼓楼自然进入北院门和回民街一带。',
     notice: ['与钟楼一起游览更顺路', '演出安排可能变化，以现场公告为准', '晚间周边客流较大'],
     tags: ['明代建筑', '钟鼓楼', '老城'],
+    reservation: {
+      status: 'unverified',
+      type: 'unverified',
+      statusText: '暂未确认',
+      title: '预约参观',
+      platform: '西安市钟鼓楼博物馆官方渠道',
+      appId: '',
+      path: '',
+      url: '',
+      accountName: '',
+      instructions: '官方公开信息显示预约政策曾按时段调整，但截至核实日未找到可可靠确认的当前官方预约入口，请以博物馆最新公告和现场售票安排为准。',
+      sourceName: '陕西省文物局《多举措、强服务｜延时开放、取消预约、拓展内容》',
+      sourceUrl: 'https://wwj.shaanxi.gov.cn/wwsx/mtjj/202408/t20240827_2507560.html',
+      verifiedAt: '2026-07-22'
+    },
     image: ''
   },
   {
@@ -177,6 +312,21 @@ const places = [
     recommend: '适合集中感受老城街巷氛围，并尝试多种具有西安特色的饮食。',
     notice: ['街区范围不只一条街，可向北院门、西羊市和大皮院延伸', '先少量购买，多尝试几种小吃', '用餐高峰客流较多，可考虑错峰'],
     tags: ['特色美食', '老城', '夜游'],
+    reservation: {
+      status: 'notRequired',
+      type: 'none',
+      statusText: '无需预约',
+      title: '预约参观',
+      platform: '北院门历史文化街区（回民街）',
+      appId: '',
+      path: '',
+      url: '',
+      accountName: '',
+      instructions: '回民街属于北院门历史文化街区的公共街巷，街区整体无需预约；清真寺、展馆或经营项目按各自规则参观。',
+      sourceName: '西安市人民政府《西安历史文化名城保护规划（2020-2035年）》',
+      sourceUrl: 'https://www.xa.gov.cn/web_files/xian/file/2022/09/09/202209091042479845518.pdf',
+      verifiedAt: '2026-07-22'
+    },
     image: ''
   },
   {
@@ -195,6 +345,21 @@ const places = [
     recommend: '适合安排早餐或上午探店，体验更接近日常生活的西安饮食氛围。',
     notice: ['早餐时段选择更多', '老店可能排队，建议保留机动时间', '尊重居民生活并保持街巷整洁'],
     tags: ['早餐', '本地美食', '市井'],
+    reservation: {
+      status: 'notRequired',
+      type: 'none',
+      statusText: '无需预约',
+      title: '预约参观',
+      platform: '洒金桥街区',
+      appId: '',
+      path: '',
+      url: '',
+      accountName: '',
+      instructions: '洒金桥属于北院门历史文化街区范围内的公共街巷，街区整体无需预约；沿街商户按各自营业安排到店。',
+      sourceName: '西安市人民政府《西安历史文化名城保护规划（2020-2035年）》',
+      sourceUrl: 'https://www.xa.gov.cn/web_files/xian/file/2022/09/09/202209091042479845518.pdf',
+      verifiedAt: '2026-07-22'
+    },
     image: ''
   },
   {
@@ -213,6 +378,21 @@ const places = [
     recommend: '遗址规模和历史价值突出，是第一次到西安最值得安排的近郊核心景点之一。',
     notice: ['建议通过官方渠道提前实名预约', '临潼往返市区需要预留交通时间', '门票通常包含兵马俑馆与丽山园，合理安排参观顺序'],
     tags: ['世界遗产', '秦文化', '必去'],
+    reservation: {
+      status: 'required',
+      type: 'web',
+      statusText: '需实名预约参观',
+      title: '预约参观',
+      platform: '秦始皇帝陵博物院官方网站',
+      appId: '',
+      path: '',
+      url: 'https://www.bmy.com.cn/guide/',
+      accountName: '秦始皇帝陵博物院',
+      instructions: '博物院实行实名制预约参观，官方网站和官方微信公众号均提供门票预约。小程序无法保证 web-view 业务域名，页面仅提供官方网址复制。',
+      sourceName: '秦始皇帝陵博物院官网《导览》',
+      sourceUrl: 'https://www.bmy.com.cn/guide/',
+      verifiedAt: '2026-07-22'
+    },
     image: ''
   },
   {
@@ -231,6 +411,21 @@ const places = [
     recommend: '唐代皇家文化、温泉遗址与骊山景观结合，适合与兵马俑安排为临潼一日游。',
     notice: ['景区门票不等于演出票，预订时注意区分', '与兵马俑同日游览时提前规划交通和顺序', '观看夜间演出需单独预留时间并确认场次'],
     tags: ['唐文化', '皇家园林', '骊山'],
+    reservation: {
+      status: 'available',
+      type: 'officialAccount',
+      statusText: '官方渠道可查询',
+      title: '预约参观',
+      platform: '华清宫景区官方微信',
+      appId: '',
+      path: '',
+      url: '',
+      accountName: '华清宫景区',
+      instructions: '华清宫官网确认官方微信名称为“华清宫景区”。请在公众号内核对当前景区门票、演出票和预约规则，注意两类票务并不相同。',
+      sourceName: '华清宫官网《关于我们》',
+      sourceUrl: 'https://www.hqc.cn/about/',
+      verifiedAt: '2026-07-22'
+    },
     image: ''
   }
 ]

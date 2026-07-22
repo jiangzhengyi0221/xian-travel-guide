@@ -76,7 +76,7 @@ page {
   font-weight: 600;
 }
 
-.food-image,
+.food-image-swiper,
 .food-image-placeholder {
   width: 100%;
   height: 320rpx;
@@ -84,6 +84,12 @@ page {
   border-radius: 24rpx;
   overflow: hidden;
   box-sizing: border-box;
+}
+
+.food-image {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .food-image-placeholder {

@@ -24,12 +24,34 @@ Page({
     }
 
     const region = regions.find(item => item.id === food.regionId)
+    const images = Array.isArray(food.images)
+      ? food.images.filter(item => typeof item === 'string' && item.trim())
+      : []
 
     this.setData({
-      food,
+      food: {
+        ...food,
+        images
+      },
       region: region || {},
       foodNotFound: false,
       hasLocation: Number.isFinite(food.latitude) && Number.isFinite(food.longitude)
+    })
+  },
+
+  previewImage(event) {
+    const images = this.data.food && Array.isArray(this.data.food.images)
+      ? this.data.food.images
+      : []
+    const current = event.currentTarget.dataset.src
+
+    if (!images.length || !current || !images.includes(current)) {
+      return
+    }
+
+    wx.previewImage({
+      current,
+      urls: images
     })
   },
 
