@@ -6,85 +6,160 @@
     <text class="region-header__summary">这里将展示当前区域的特色简介和旅行亮点。</text>
   </view>
 
+  <block wx:if="{{region.id}}">
+    <view
+      wx:if="{{!isSearchActive}}"
+      class="search-entry"
+      bindtap="activateSearch"
+      hover-class="search-entry--pressed"
+      hover-stay-time="80"
+    >
+      <text class="search-entry__icon">⌕</text>
+      <view class="search-entry__text">
+        <text class="search-entry__title">搜索{{region.name}}景点和美食</text>
+        <text class="search-entry__hint">仅搜索当前区域已收录内容</text>
+      </view>
+      <text class="search-entry__arrow">→</text>
+    </view>
+
+    <view wx:else class="region-search">
+      <view class="region-search__form">
+        <input
+          class="region-search__input"
+          value="{{searchKeyword}}"
+          placeholder="输入当前区域的景点或美食名称"
+          placeholder-class="region-search__placeholder"
+          confirm-type="search"
+          maxlength="40"
+          cursor-spacing="24"
+          focus="{{searchInputFocused}}"
+          bindinput="onSearchInput"
+          bindconfirm="onSearchConfirm"
+        />
+        <view class="region-search__cancel" bindtap="cancelSearch">取消</view>
+      </view>
+
+      <view wx:if="{{hasSearchKeyword}}" class="region-suggestion-panel">
+        <view wx:if="{{searchSuggestions.length}}" class="region-suggestion-list">
+          <view
+            wx:for="{{searchSuggestions}}"
+            wx:key="url"
+            class="region-suggestion-item"
+            data-url="{{item.url}}"
+            bindtap="goToSearchResult"
+            hover-class="region-suggestion-item--pressed"
+          >
+            <text class="region-suggestion-item__type">{{item.icon}} {{item.typeLabel}}</text>
+            <text class="region-suggestion-item__name">{{item.name}}</text>
+            <text class="region-suggestion-item__arrow">→</text>
+          </view>
+        </view>
+        <view wx:else class="region-suggestion-empty">没有找到当前区域的相关景点或美食</view>
+      </view>
+    </view>
+  </block>
+
   <view class="content-section content-section--attraction">
-    <view class="content-section__heading">
+    <view
+      class="content-section__heading {{activeSection === 'attractions' ? 'content-section__heading--active' : ''}}"
+      data-section="attractions"
+      bindtap="toggleSection"
+      hover-class="content-section__heading--pressed"
+      hover-stay-time="80"
+    >
       <view class="content-section__number">01</view>
       <view class="content-section__text">
-        <text class="content-section__title">景点</text>
+        <view class="content-section__title-row">
+          <text class="content-section__indicator">{{activeSection === 'attractions' ? '▼' : '▶'}}</text>
+          <text class="content-section__title">景点</text>
+        </view>
         <text class="content-section__subtitle">值得游览的城市风景</text>
       </view>
     </view>
-    <view wx:if="{{attractions.length}}" class="place-list">
-      <navigator
-        wx:for="{{attractions}}"
-        wx:for-item="place"
-        wx:key="id"
-        class="place-card"
-        url="/pages/detail/detail?id={{place.id}}"
-      >
-        <text class="place-card__name">{{place.name}}</text>
-        <text class="place-card__summary">{{place.summary}}</text>
-        <view class="place-card__tags">
-          <text
-            wx:for="{{place.tags}}"
-            wx:for-item="tag"
-            wx:key="*this"
-            class="place-card__tag"
-          >{{tag}}</text>
-        </view>
-      </navigator>
-    </view>
-    <view wx:else class="content-placeholder">
-      <text class="content-placeholder__label">暂无景点</text>
-      <text class="content-placeholder__hint">后续可以继续补充景点内容</text>
-    </view>
+    <block wx:if="{{activeSection === 'attractions'}}">
+      <view wx:if="{{attractions.length}}" class="place-list">
+        <navigator
+          wx:for="{{attractions}}"
+          wx:for-item="place"
+          wx:key="id"
+          class="place-card"
+          url="/pages/detail/detail?id={{place.id}}"
+        >
+          <text class="place-card__name">{{place.name}}</text>
+          <text class="place-card__summary">{{place.summary}}</text>
+          <view class="place-card__tags">
+            <text
+              wx:for="{{place.tags}}"
+              wx:for-item="tag"
+              wx:key="*this"
+              class="place-card__tag"
+            >{{tag}}</text>
+          </view>
+        </navigator>
+      </view>
+      <view wx:else class="content-placeholder">
+        <text class="content-placeholder__label">暂无景点</text>
+        <text class="content-placeholder__hint">后续可以继续补充景点内容</text>
+      </view>
+    </block>
   </view>
 
   <view class="content-section content-section--food">
-    <view class="content-section__heading">
+    <view
+      class="content-section__heading {{activeSection === 'foods' ? 'content-section__heading--active' : ''}}"
+      data-section="foods"
+      bindtap="toggleSection"
+      hover-class="content-section__heading--pressed"
+      hover-stay-time="80"
+    >
       <view class="content-section__number">02</view>
       <view class="content-section__text">
-        <text class="content-section__title">美食</text>
+        <view class="content-section__title-row">
+          <text class="content-section__indicator">{{activeSection === 'foods' ? '▼' : '▶'}}</text>
+          <text class="content-section__title">美食</text>
+        </view>
         <text class="content-section__subtitle">不容错过的本地味道</text>
       </view>
     </view>
-    <view wx:if="{{foods.length}}" class="food-list">
-      <navigator
-        wx:for="{{foods}}"
-        wx:for-item="food"
-        wx:key="id"
-        class="food-card"
-        url="/pages/food-detail/food-detail?id={{food.id}}"
-      >
-        <image
-          wx:if="{{food.image}}"
-          class="food-card__image"
-          src="{{food.image}}"
-          mode="aspectFill"
-        ></image>
-        <view class="food-card__heading">
-          <text class="food-card__name">{{food.name}}</text>
-          <text class="food-card__price">{{food.price}}</text>
-        </view>
-        <view class="food-card__shop-row">
-          <text class="food-card__shop-label">推荐店铺</text>
-          <text class="food-card__shop">{{food.shop}}</text>
-        </view>
-        <text class="food-card__summary">{{food.summary}}</text>
-        <view class="food-card__tags">
-          <text
-            wx:for="{{food.tags}}"
-            wx:for-item="tag"
-            wx:key="*this"
-            class="food-card__tag"
-          >{{tag}}</text>
-        </view>
-      </navigator>
-    </view>
-    <view wx:else class="content-placeholder">
-      <text class="content-placeholder__label">暂无美食</text>
-      <text class="content-placeholder__hint">后续可以继续补充美食内容</text>
-    </view>
+    <block wx:if="{{activeSection === 'foods'}}">
+      <view wx:if="{{foods.length}}" class="food-list">
+        <navigator
+          wx:for="{{foods}}"
+          wx:for-item="food"
+          wx:key="id"
+          class="food-card"
+          url="/pages/food-detail/food-detail?id={{food.id}}"
+        >
+          <image
+            wx:if="{{food.image}}"
+            class="food-card__image"
+            src="{{food.image}}"
+            mode="aspectFill"
+          ></image>
+          <view class="food-card__heading">
+            <text class="food-card__name">{{food.name}}</text>
+            <text class="food-card__price">{{food.price}}</text>
+          </view>
+          <view class="food-card__shop-row">
+            <text class="food-card__shop-label">推荐店铺</text>
+            <text class="food-card__shop">{{food.shop}}</text>
+          </view>
+          <text class="food-card__summary">{{food.summary}}</text>
+          <view class="food-card__tags">
+            <text
+              wx:for="{{food.tags}}"
+              wx:for-item="tag"
+              wx:key="*this"
+              class="food-card__tag"
+            >{{tag}}</text>
+          </view>
+        </navigator>
+      </view>
+      <view wx:else class="content-placeholder">
+        <text class="content-placeholder__label">暂无美食</text>
+        <text class="content-placeholder__hint">后续可以继续补充美食内容</text>
+      </view>
+    </block>
   </view>
 
 </view>

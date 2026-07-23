@@ -37,6 +37,57 @@
       </map>
     </view>
 
+    <view
+      wx:if="{{!isSearchActive}}"
+      class="search-entry"
+      bindtap="activateSearch"
+      hover-class="search-entry--pressed"
+      hover-stay-time="80"
+    >
+      <text class="search-entry__icon">⌕</text>
+      <view class="search-entry__text">
+        <text class="search-entry__title">搜索景点和美食</text>
+        <text class="search-entry__hint">搜索全部已收录内容</text>
+      </view>
+      <text class="search-entry__arrow">→</text>
+    </view>
+
+    <view wx:else class="home-search">
+      <view class="home-search__form">
+        <input
+          class="home-search__input"
+          value="{{searchKeyword}}"
+          placeholder="输入景点或美食名称"
+          placeholder-class="home-search__placeholder"
+          confirm-type="search"
+          maxlength="40"
+          cursor-spacing="24"
+          focus="{{searchInputFocused}}"
+          bindinput="onSearchInput"
+          bindconfirm="onSearchConfirm"
+        />
+        <view class="home-search__cancel" bindtap="cancelSearch">取消</view>
+      </view>
+
+      <view wx:if="{{hasSearchKeyword}}" class="home-suggestion-panel">
+        <view wx:if="{{searchSuggestions.length}}" class="home-suggestion-list">
+          <navigator
+            wx:for="{{searchSuggestions}}"
+            wx:key="url"
+            class="home-suggestion-item"
+            url="{{item.url}}"
+            bindtap="onSearchSuggestionTap"
+            hover-class="home-suggestion-item--pressed"
+          >
+            <text class="home-suggestion-item__type">{{item.icon}} {{item.typeLabel}}</text>
+            <text class="home-suggestion-item__name">{{item.name}}</text>
+            <text class="home-suggestion-item__arrow">→</text>
+          </navigator>
+        </view>
+        <view wx:else class="home-suggestion-empty">没有找到相关景点或美食</view>
+      </view>
+    </view>
+
   </view>
 
   <view class="section region-section">

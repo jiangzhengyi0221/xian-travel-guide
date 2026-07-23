@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/search/search",
     "pages/full-map/full-map",
     "pages/food/food",
     "pages/food-detail/food-detail",

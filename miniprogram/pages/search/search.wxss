@@ -1,0 +1,121 @@
+/* pages/search/search.wxss */
+page {
+  min-height: 100%;
+  background: #f7f3ea;
+  color: #27231f;
+}
+
+.search-page {
+  padding: 48rpx 32rpx calc(56rpx + env(safe-area-inset-bottom));
+}
+
+.search-header {
+  display: flex;
+  flex-direction: column;
+  padding: 16rpx 8rpx 36rpx;
+}
+
+.search-header__eyebrow {
+  color: #a24b32;
+  font-size: 20rpx;
+  font-weight: 600;
+  letter-spacing: 4rpx;
+}
+
+.search-header__title {
+  margin-top: 12rpx;
+  font-size: 52rpx;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.search-header__summary {
+  margin-top: 14rpx;
+  color: #756d63;
+  font-size: 25rpx;
+  line-height: 1.65;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+}
+
+.search-form__input {
+  height: 84rpx;
+  min-width: 0;
+  flex: 1;
+  padding: 0 26rpx;
+  border: 2rpx solid rgba(109, 91, 69, 0.16);
+  border-radius: 24rpx;
+  background: rgba(255, 255, 255, 0.78);
+  box-sizing: border-box;
+  color: #302a25;
+  font-size: 27rpx;
+}
+
+.search-form__placeholder {
+  color: #9a9187;
+}
+
+.suggestion-panel {
+  overflow: hidden;
+  margin-top: 16rpx;
+  border: 2rpx solid rgba(109, 91, 69, 0.14);
+  border-radius: 24rpx;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 16rpx 42rpx rgba(76, 58, 36, 0.12);
+}
+
+.suggestion-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.suggestion-item {
+  display: flex;
+  align-items: center;
+  min-height: 92rpx;
+  padding: 20rpx 24rpx;
+  border-bottom: 2rpx solid rgba(109, 91, 69, 0.09);
+  box-sizing: border-box;
+}
+
+.suggestion-item:last-child {
+  border-bottom: 0;
+}
+
+.suggestion-item--pressed {
+  background: rgba(238, 229, 214, 0.7);
+}
+
+.suggestion-item__type {
+  width: 126rpx;
+  flex: none;
+  color: #7b6a58;
+  font-size: 22rpx;
+}
+
+.suggestion-item__name {
+  min-width: 0;
+  flex: 1;
+  color: #302a25;
+  font-size: 27rpx;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.suggestion-item__arrow {
+  flex: none;
+  margin-left: 16rpx;
+  color: #948a7e;
+  font-size: 32rpx;
+  font-weight: 300;
+}
+
+.suggestion-empty {
+  padding: 30rpx 24rpx;
+  color: #857a6e;
+  font-size: 23rpx;
+  text-align: center;
+}

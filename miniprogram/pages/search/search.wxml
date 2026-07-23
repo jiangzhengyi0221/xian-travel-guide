@@ -1,0 +1,41 @@
+<!-- pages/search/search.wxml -->
+<view class="search-page">
+  <view class="search-header">
+    <text class="search-header__eyebrow">SEARCH GUIDE</text>
+    <text class="search-header__title">{{isRegionSearch ? '搜索' + region.name : '搜索西安'}}</text>
+    <text class="search-header__summary">
+      {{isRegionSearch ? '查找当前区域内已收录的景点和美食' : '查找全部已收录的西安景点和美食'}}
+    </text>
+  </view>
+
+  <view class="search-form">
+    <input
+      class="search-form__input"
+      value="{{keyword}}"
+      placeholder="输入景点或美食名称"
+      placeholder-class="search-form__placeholder"
+      confirm-type="search"
+      maxlength="40"
+      bindinput="onKeywordInput"
+      bindconfirm="onKeywordConfirm"
+      focus="{{true}}"
+    />
+  </view>
+
+  <view wx:if="{{hasKeyword}}" class="suggestion-panel">
+    <view wx:if="{{suggestions.length}}" class="suggestion-list">
+      <navigator
+        wx:for="{{suggestions}}"
+        wx:key="id"
+        class="suggestion-item"
+        url="{{item.url}}"
+        hover-class="suggestion-item--pressed"
+      >
+        <text class="suggestion-item__type">{{item.icon}} {{item.typeLabel}}</text>
+        <text class="suggestion-item__name">{{item.name}}</text>
+        <text class="suggestion-item__arrow">→</text>
+      </navigator>
+    </view>
+    <view wx:else class="suggestion-empty">没有找到相关景点或美食</view>
+  </view>
+</view>
