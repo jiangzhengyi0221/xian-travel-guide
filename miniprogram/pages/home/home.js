@@ -1,7 +1,6 @@
 // pages/home/home.js
 const regions = require('../../data/regions.js')
 const places = require('../../data/places.js')
-const foods = require('../../data/foods.js')
 const mapPoints = require('../../data/map-points.js')
 const { buildSearchSuggestions } = require('../../utils/search-utils.js')
 const {
@@ -12,6 +11,8 @@ const {
 } = require('../../data/map-config.js')
 
 const SPECIAL_MARKER_ID_START = 1000
+const SEARCH_RESULT_MARKER_ID = 2000
+const SEARCH_RESULT_SCALE = 15
 
 const featuredMarkerPlaces = featuredMarkerConfig
   .map(config => {
@@ -34,7 +35,7 @@ const featuredMarkerPlaces = featuredMarkerConfig
 
 const markerIdToPlaceId = {}
 
-const markers = featuredMarkerPlaces.map(({ place, label }, index) => {
+const featuredMarkers = featuredMarkerPlaces.map(({ place, label }, index) => {
   const markerId = index + 1
 
   markerIdToPlaceId[markerId] = place.id
@@ -71,12 +72,12 @@ const specialMarkers = mapPoints
     }
   }))
 
-markers.push(...specialMarkers)
+const baseMarkers = featuredMarkers.concat(specialMarkers)
 
 Page({
   data: {
     regions,
-    markers,
+    markers: baseMarkers,
     mapLatitude: defaultCenter.latitude,
     mapLongitude: defaultCenter.longitude,
     mapScale: defaultScale,
@@ -111,7 +112,7 @@ Page({
     const keyword = typeof value === 'string' ? value : ''
     const hasSearchKeyword = Boolean(keyword.trim())
     const searchSuggestions = hasSearchKeyword
-      ? buildSearchSuggestions({ places, foods, keyword, limit: 5 })
+      ? buildSearchSuggestions({ places, keyword, limit: 5 })
       : []
 
     this.setData({
@@ -131,9 +132,56 @@ Page({
     })
   },
 
-  onSearchSuggestionTap() {
+  onSearchSuggestionTap(event) {
+    const { id } = event.currentTarget.dataset
+    const place = places.find(item => item.id === id)
+
+    if (
+      !place ||
+      !Number.isFinite(place.latitude) ||
+      !Number.isFinite(place.longitude)
+    ) {
+      wx.showToast({
+        title: '暂时无法定位该景点',
+        icon: 'none'
+      })
+      return
+    }
+
+    markerIdToPlaceId[SEARCH_RESULT_MARKER_ID] = place.id
+
+    const visibleBaseMarkers = baseMarkers.filter(marker => (
+      markerIdToPlaceId[marker.id] !== place.id
+    ))
+    const searchResultMarker = {
+      id: SEARCH_RESULT_MARKER_ID,
+      latitude: place.latitude,
+      longitude: place.longitude,
+      title: place.name,
+      width: 36,
+      height: 36,
+      zIndex: 10,
+      callout: {
+        content: place.name,
+        color: '#ffffff',
+        fontSize: 13,
+        borderRadius: 8,
+        bgColor: '#a24b32',
+        padding: 8,
+        display: 'ALWAYS'
+      }
+    }
+
     this.setData({
-      searchInputFocused: false
+      markers: visibleBaseMarkers.concat(searchResultMarker),
+      mapLatitude: place.latitude,
+      mapLongitude: place.longitude,
+      mapScale: SEARCH_RESULT_SCALE,
+      isSearchActive: false,
+      searchInputFocused: false,
+      searchKeyword: '',
+      searchSuggestions: [],
+      hasSearchKeyword: false
     })
   },
 
